@@ -1,0 +1,1 @@
+python ../camera/camera_detection.py
