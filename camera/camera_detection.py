@@ -47,11 +47,6 @@ def image_process(image):
             scores = detection[5:]
             maxi_class = np.argmax(scores)
             confidence = scores[maxi_class]
-            print(scores)
-            print(maxi_class)
-            print(confidence)
-            print(LABELS)
-            exit(1)
             if LABELS[maxi_class] == "person":
                 if confidence > 0.5:
                     box = detection[0:4] * np.array([W, H, W, H])
