@@ -20,7 +20,7 @@ def check(a, b):
 def setup():
     global net, ln, LABELS
     LABELS = open('../yolo/coco.names').read().strip().split("\n")
-    net = cv2.dnn.readNetFromDarknet('yolo/yolov3.cfg', 'yolo/yolov3.weights')
+    net = cv2.dnn.readNetFromDarknet('../yolo/yolov3.cfg', '../yolo/yolov3.weights')
     ln = net.getLayerNames()
     ln = [ln[i - 1] for i in net.getUnconnectedOutLayers()]
 
@@ -40,11 +40,18 @@ def image_process(image):
     confidences = []
     outline = []
 
+    print(layerOutputs)
+    exit(1)
     for output in layerOutputs:
         for detection in output:
             scores = detection[5:]
             maxi_class = np.argmax(scores)
             confidence = scores[maxi_class]
+            print(scores)
+            print(maxi_class)
+            print(confidence)
+            print(LABELS)
+            exit(1)
             if LABELS[maxi_class] == "person":
                 if confidence > 0.5:
                     box = detection[0:4] * np.array([W, H, W, H])
@@ -92,7 +99,7 @@ def image_process(image):
 
 frameno = 0
 filename = "../video/test.mp4"
-opname = "video/output.mp4"
+opname = "../video/output.mp4"
 cap = cv2.VideoCapture(filename)
 
 if __name__ == '__main__':
@@ -106,12 +113,15 @@ if __name__ == '__main__':
         video = current_img.shape
         frameno += 1
 
-        if frameno % 2 == 0 or frameno == 1:
-            setup()
-            image_process(current_img)
-            Frame = processedImg
+        #if frameno % 2 == 0 or frameno == 1:
+        setup()
+        image_process(current_img)
+        Frame = processedImg
 
-        if cv2.waitKey(1) & 0xFF == ord('s'):
+        cv2.imshow('Output', Frame)
+
+        keyRet = cv2.waitKey(1)
+        if 0xFF == ord('s') or keyRet == 81 or keyRet == 113 or keyRet == 27:
             break
 
     cap.release()
