@@ -1,9 +1,10 @@
 # built upon https://github.com/mk-gurucharan/Social-Distancing-Detector
 
-import numpy as np
 import cv2
 import imutils
-import time
+import numpy as np
+
+import fob.fob_data_collection as fob
 
 # global variables
 LABELS = open('../yolo/coco.names').read().strip().split("\n")
@@ -12,9 +13,9 @@ input_file = "../video/virat.mp4"
 output_file = "../video/output.mp4"
 frame_counter = 0
 cap = cv2.VideoCapture(input_file)
+fob_data = fob.FobDataCollection(1)
 
 
-# TODO: Display footage in real time
 # TODO: Use threads for better performance
 def check(a, b):
     dist = ((a[0] - b[0]) ** 2 + 550 / ((a[1] + b[1]) / 2) * (a[1] - b[1]) ** 2) ** 0.5
@@ -52,11 +53,13 @@ def detectPerson(layers, w, h):
 
 
 def drawBox(box_line, outline, frame):
+    violations = set()
     if len(box_line) > 0:
         flat_box = box_line.flatten()
         pairs = []
         center = []
         status = []
+        group = 0
         for i in flat_box:
             (x, y) = (outline[i][0], outline[i][1])
             (w, h) = (outline[i][2], outline[i][3])
@@ -69,6 +72,8 @@ def drawBox(box_line, outline, frame):
 
                 if close:
                     pairs.append([center[i], center[j]])
+                    violations.add(i)
+                    violations.add(j)
                     status[i] = True
                     status[j] = True
 
@@ -97,11 +102,10 @@ def image_process(image):
     layer_outputs = net.forward(getOutputLayerNames())
 
     confidences, outline = detectPerson(layer_outputs, W, H)
-    # perform non-maxima supression
+    # perform non-maxima suppression
     box_line = cv2.dnn.NMSBoxes(outline, confidences, 0.5, 0.3)
 
-    frame = drawBox(box_line, outline, frame)
-    processedImg = frame.copy()
+    processedImg = drawBox(box_line, outline, frame)
 
 
 if __name__ == '__main__':
