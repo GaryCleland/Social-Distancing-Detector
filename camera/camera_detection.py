@@ -3,6 +3,7 @@
 import cv2
 import imutils
 import numpy as np
+import time
 
 import fob.fob_data_collection as fob
 
@@ -52,14 +53,31 @@ def detectPerson(layers, w, h):
     return confidences, outline
 
 
+def createGroups(vio, i, j):
+    if i not in vio and j not in vio:
+        for x in groups:
+            if len(x) == 0:
+                x.add(i)
+                x.add(j)
+                break
+    else:
+        for x in groups:
+            if i in x or j in x:
+                x.add(i)
+                x.add(j)
+                break
+    return groups
+
+
 def drawBox(box_line, outline, frame):
-    violations = set()
+    global groups, violations
     if len(box_line) > 0:
         flat_box = box_line.flatten()
         pairs = []
         center = []
         status = []
-        group = 0
+        groups = [set() for i in range(10)]
+        violations = set()
         for i in flat_box:
             (x, y) = (outline[i][0], outline[i][1])
             (w, h) = (outline[i][2], outline[i][3])
@@ -72,8 +90,9 @@ def drawBox(box_line, outline, frame):
 
                 if close:
                     pairs.append([center[i], center[j]])
-                    violations.add(i)
-                    violations.add(j)
+                    groups = createGroups(violations, tuple(center[i]), tuple(center[j]))
+                    violations.add(tuple(center[i]))
+                    violations.add(tuple(center[j]))
                     status[i] = True
                     status[j] = True
 
@@ -109,6 +128,7 @@ def image_process(image):
 
 
 if __name__ == '__main__':
+    global groups
     while True:
 
         ret, frame = cap.read()
@@ -125,6 +145,14 @@ if __name__ == '__main__':
         Frame = processedImg
 
         cv2.imshow('Output', Frame)
+        group_count = 0
+        group_sizes = []
+        for x in groups:
+            if len(x) != 0:
+                group_count += 1
+                group_sizes.append(len(x))
+        print(group_count)
+        print(group_sizes)
 
         keyRet = cv2.waitKey(1)
         if 0xFF == ord('s') or keyRet == 81 or keyRet == 113 or keyRet == 27:
