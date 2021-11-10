@@ -1,11 +1,13 @@
 from datetime import datetime
 import hashlib
+import fob.fob_data_collection as fob
 
 
 class Alert:
-    def __init__(self, camera, fob_data, group_size, duration, location):
+    def __init__(self, camera, group_size, duration, location):
         self.camera = camera
-        self.fob_data = fob_data
+        self.fob = fob.FobDataCollection(camera)
+        self.fob_data = self.fob.get_student_count()
         self.location = location
         self.group_size = group_size
         self.duration = duration

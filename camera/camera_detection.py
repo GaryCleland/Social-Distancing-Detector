@@ -6,7 +6,6 @@ import numpy as np
 import time
 import copy
 
-import fob.fob_data_collection as fob
 import alert.alert as Alert
 
 # global variables
@@ -16,7 +15,6 @@ input_file = "../video/virat.mp4"
 output_file = "../video/output.mp4"
 frame_counter = 0
 cap = cv2.VideoCapture(input_file)
-fob_data = fob.FobDataCollection(1)
 duration = [0] * 10
 groups = [set() for i in range(18)]
 frame_rate = 0
@@ -74,8 +72,7 @@ def createGroups(vio, i, j):
 
 
 def createAlert(frames, group_size):
-    alert = Alert.Alert("camera1", "data1", group_size, frames / frame_rate, "left")
-    exit(1)
+    alert = Alert.Alert(0, group_size, frames / frame_rate, "left")
 
 
 def getDuration(temp):
