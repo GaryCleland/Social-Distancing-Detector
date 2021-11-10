@@ -14,8 +14,9 @@ class Alert:
         self.module = self.get_module()
         self.course = self.get_course()
         # used to remove duplicates
-        self.id = hashlib.sha1(str.encode(group_size) + str.encode(camera) + str.encode(self.classroom) +
-                               str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
+        self.id = hashlib.sha1(str.encode(location) + str.encode(group_size) + str.encode(camera) +
+                               str.encode(self.classroom) + str.encode(
+                                datetime.today().strftime("%B %d, %Y"))).hexdigest()
 
     # retrieve class from DB based on what camera was used
     def get_class(self):

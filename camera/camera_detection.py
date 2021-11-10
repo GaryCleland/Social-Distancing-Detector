@@ -4,6 +4,7 @@ import cv2
 import imutils
 import numpy as np
 import time
+import copy
 
 import fob.fob_data_collection as fob
 
@@ -15,6 +16,8 @@ output_file = "../video/output.mp4"
 frame_counter = 0
 cap = cv2.VideoCapture(input_file)
 fob_data = fob.FobDataCollection(1)
+duration = [0] * 10
+groups = [set() for i in range(18)]
 
 
 # TODO: Use threads for better performance
@@ -55,10 +58,10 @@ def detectPerson(layers, w, h):
 
 def createGroups(vio, i, j):
     if i not in vio and j not in vio:
-        for x in groups:
-            if len(x) == 0:
-                x.add(i)
-                x.add(j)
+        for x in range(0, len(groups)):
+            if len(groups[x]) == 0:
+                groups[x].add(i)
+                groups[x].add(j)
                 break
     else:
         for x in groups:
@@ -66,7 +69,18 @@ def createGroups(vio, i, j):
                 x.add(i)
                 x.add(j)
                 break
-    return groups
+
+
+def getDuration(temp):
+    global duration
+    print(groups)
+    print(temp)
+    for x in range(0, len(groups)):
+        if len(groups[x]) == len(temp[x]) and len(groups[x]) != 0:
+            duration[x] += 1
+        elif len(groups[x]) != len(temp[x]):
+            duration[x] = 0
+            createAlert()
 
 
 def drawBox(box_line, outline, frame):
@@ -76,21 +90,22 @@ def drawBox(box_line, outline, frame):
         pairs = []
         center = []
         status = []
-        groups = [set() for i in range(10)]
+        temp_group = copy.deepcopy(groups)
+        groups = [set() for i in range(18)]
         violations = set()
         for i in flat_box:
             (x, y) = (outline[i][0], outline[i][1])
             (w, h) = (outline[i][2], outline[i][3])
             center.append([int(x + w / 2), int(y + h / 2)])
             status.append(False)
-
         for i in range(len(center)):
             for j in range(len(center)):
                 close = check(center[i], center[j])
 
                 if close:
                     pairs.append([center[i], center[j]])
-                    groups = createGroups(violations, tuple(center[i]), tuple(center[j]))
+                    # print(groups)
+                    createGroups(violations, tuple(center[i]), tuple(center[j]))
                     violations.add(tuple(center[i]))
                     violations.add(tuple(center[j]))
                     status[i] = True
@@ -107,6 +122,7 @@ def drawBox(box_line, outline, frame):
             index += 1
         for h in pairs:
             cv2.line(frame, tuple(h[0]), tuple(h[1]), (0, 0, 255), 2)
+        getDuration(temp_group)
     return frame
 
 
@@ -128,8 +144,8 @@ def image_process(image):
 
 
 if __name__ == '__main__':
-    global groups
     while True:
+        start_time = time.time()
 
         ret, frame = cap.read()
         if not ret:
@@ -145,14 +161,15 @@ if __name__ == '__main__':
         Frame = processedImg
 
         cv2.imshow('Output', Frame)
+        #print("FPS: ", 1.0 / (time.time() - start_time))
         group_count = 0
         group_sizes = []
         for x in groups:
             if len(x) != 0:
                 group_count += 1
                 group_sizes.append(len(x))
-        print(group_count)
-        print(group_sizes)
+        print(duration)
+        time.sleep(2)
 
         keyRet = cv2.waitKey(1)
         if 0xFF == ord('s') or keyRet == 81 or keyRet == 113 or keyRet == 27:
