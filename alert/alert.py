@@ -3,7 +3,7 @@ import hashlib
 
 
 class Alert:
-    def __init__(self, camera, fob_data, group_size, duration, location=None):
+    def __init__(self, camera, fob_data, group_size, duration, location):
         self.camera = camera
         self.fob_data = fob_data
         self.location = location
@@ -14,7 +14,7 @@ class Alert:
         self.module = self.get_module()
         self.course = self.get_course()
         # used to remove duplicates
-        self.id = hashlib.sha1(str.encode(location) + str.encode(group_size) + str.encode(camera) +
+        self.id = hashlib.sha1(str.encode(str(tuple(location))) + str.encode(str(group_size)) + str.encode(camera) +
                                str.encode(self.classroom) + str.encode(
                                 datetime.today().strftime("%B %d, %Y"))).hexdigest()
 

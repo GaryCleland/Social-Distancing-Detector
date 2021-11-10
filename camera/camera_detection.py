@@ -7,6 +7,7 @@ import time
 import copy
 
 import fob.fob_data_collection as fob
+import alert.alert as Alert
 
 # global variables
 LABELS = open('../yolo/coco.names').read().strip().split("\n")
@@ -18,6 +19,7 @@ cap = cv2.VideoCapture(input_file)
 fob_data = fob.FobDataCollection(1)
 duration = [0] * 10
 groups = [set() for i in range(18)]
+frame_rate = 0
 
 
 # TODO: Use threads for better performance
@@ -71,6 +73,11 @@ def createGroups(vio, i, j):
                 break
 
 
+def createAlert(frames, group_size):
+    alert = Alert.Alert("camera1", "data1", group_size, frames / frame_rate, "left")
+    exit(1)
+
+
 def getDuration(temp):
     global duration
     print(groups)
@@ -78,9 +85,9 @@ def getDuration(temp):
     for x in range(0, len(groups)):
         if len(groups[x]) == len(temp[x]) and len(groups[x]) != 0:
             duration[x] += 1
-        elif len(groups[x]) != len(temp[x]):
+        elif len(groups[x]) != len(temp[x]) and len(temp[x]) != 0:
+            createAlert(duration[x], len(temp[x]))
             duration[x] = 0
-            createAlert()
 
 
 def drawBox(box_line, outline, frame):
@@ -161,15 +168,14 @@ if __name__ == '__main__':
         Frame = processedImg
 
         cv2.imshow('Output', Frame)
-        #print("FPS: ", 1.0 / (time.time() - start_time))
+        end_time = time.time()
+        frame_rate = 1.0 / (end_time - start_time)
         group_count = 0
         group_sizes = []
         for x in groups:
             if len(x) != 0:
                 group_count += 1
                 group_sizes.append(len(x))
-        print(duration)
-        time.sleep(2)
 
         keyRet = cv2.waitKey(1)
         if 0xFF == ord('s') or keyRet == 81 or keyRet == 113 or keyRet == 27:
