@@ -72,7 +72,7 @@ def createGroups(vio, i, j):
 
 
 def createAlert(frames, group_size):
-    alert = Alert.Alert(0, group_size, frames / frame_rate, "left")
+    Alert.sendAlert(0, group_size, frames / frame_rate, "left")
 
 
 def getDuration(temp):
