@@ -21,6 +21,7 @@ frame_rate = 0
 
 
 # TODO: Use threads for better performance
+# TODO: Add option for stream and video
 def check(a, b):
     dist = ((a[0] - b[0]) ** 2 + 550 / ((a[1] + b[1]) / 2) * (a[1] - b[1]) ** 2) ** 0.5
     calibration = (a[1] + b[1]) / 2
@@ -77,8 +78,6 @@ def createAlert(frames, group_size):
 
 def getDuration(temp):
     global duration
-    print(groups)
-    print(temp)
     for x in range(0, len(groups)):
         if len(groups[x]) == len(temp[x]) and len(groups[x]) != 0:
             duration[x] += 1
@@ -108,7 +107,6 @@ def drawBox(box_line, outline, frame):
 
                 if close:
                     pairs.append([center[i], center[j]])
-                    # print(groups)
                     createGroups(violations, tuple(center[i]), tuple(center[j]))
                     violations.add(tuple(center[i]))
                     violations.add(tuple(center[j]))

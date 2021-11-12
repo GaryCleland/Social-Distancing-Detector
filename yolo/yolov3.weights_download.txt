@@ -1,0 +1,2 @@
+https://pjreddie.com/media/files/yolov3.weights
+can also install using command: wget https://pjreddie.com/media/files/yolov3.weights

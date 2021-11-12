@@ -2,7 +2,7 @@ import os
 import time
 from threading import Thread
 
-
+# TODO: Create alert to send to web app only to say whether the camera is on/offline
 # Outputs whether or not the camera stream is down
 # only in terminal for now
 class LibVerifyHost:
