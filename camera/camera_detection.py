@@ -20,13 +20,12 @@ def check(a, b):
 
 
 class CameraDetection:
-    def __init__(self, video, cam):
-        self.input_file = video
-        self.cap = cv2.VideoCapture(video)
+    def __init__(self, cam, video_input):
+        print(video_input)
+        self.cap = cv2.VideoCapture(video_input)
         self.cam = cam
         self.LABELS = open('yolo/coco.names').read().strip().split("\n")
         self.net = cv2.dnn.readNetFromDarknet('yolo/yolov3.cfg', 'yolo/yolov3.weights')
-        # input_file = "video/virat.mp4"
         self.output_file = "video/output.mp4"
         self.frame_counter = 0
         self.duration = [0] * 10
@@ -38,8 +37,6 @@ class CameraDetection:
         new_thread.daemon = True
         new_thread.start()
         return self
-
-    # TODO: Add option for stream and video
 
     def getOutputLayerNames(self):
         ln = self.net.getLayerNames()
@@ -150,8 +147,9 @@ class CameraDetection:
     def run_detector(self):
         while True:
             start_time = time.time()
-
-            ret, frame = self.cap.read()
+            frame = None
+            while frame is None:
+                ret, frame = self.cap.read()
             if not ret:
                 break
             current_img = frame.copy()
