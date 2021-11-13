@@ -29,11 +29,12 @@ def sendAlert(cam, size, time, loc):
     fob_data = fob.FobDataCollection(camera).get_student_count()
     date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     # used to remove duplicates
-    alert_id = hashlib.sha1(str.encode(str(tuple(location))) + str.encode(str(group_size)) + str.encode(camera) +
+    alert_id = hashlib.sha1(str.encode(str(tuple(location))) + str.encode(str(group_size)) + str.encode(str(camera)) +
                             str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
     if not checkDuplicates(alert_id):
         sendToWebApp()
         sendToDatabase()
+    print(cam, size, time, loc)
 
 
 # retrieve class from DB based on what camera was used
