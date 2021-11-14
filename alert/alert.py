@@ -1,6 +1,7 @@
 from datetime import datetime
 import hashlib
 import fob.fob_data_collection as fob
+from communicator import *
 
 camera = None
 group_size = None
@@ -8,16 +9,21 @@ duration = None
 location = None
 fob_data = None
 date_time = None
+comm = Communicator()
 
 
 def sendToDatabase():
     """camera, group_size, duration, location, fob_data, date_time, get_class(camera),
     get_module(camera), get_course(camera)"""
+    comm.sock.connect('127.0.0.1', 51001)
+    comm.send_msg(comm.sock, "replace")
 
 
 def sendToWebApp():
     """camera, group_size, duration, location, fob_data, date_time, get_class(camera),
     get_module(camera), get_course(camera)"""
+    comm.sock.connect('127.0.0.1', 51000)
+    comm.send_msg(comm.sock, "replace")
 
 
 def sendAlert(cam, size, time, loc):
