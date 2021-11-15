@@ -1,0 +1,5 @@
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf.Host\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf.Host\obj\Debug\netcoreapp3.1\App.g.cs
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf.Host\obj\Debug\netcoreapp3.1\WebAppCSC4008.Skia.Wpf.Host_Content.g.cs
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf.Host\obj\Debug\netcoreapp3.1\WebAppCSC4008.Skia.Wpf.Host_MarkupCompile.cache
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf.Host\obj\Debug\netcoreapp3.1\WebAppCSC4008.Skia.Wpf.Host_MarkupCompile.lref

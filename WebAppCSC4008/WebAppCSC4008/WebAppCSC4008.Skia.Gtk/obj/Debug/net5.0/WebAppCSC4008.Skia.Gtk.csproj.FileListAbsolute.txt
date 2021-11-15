@@ -1,0 +1,5 @@
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Gtk\obj\Debug\net5.0\WebAppCSC4008.Skia.Gtk.csproj.AssemblyReference.cache
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Gtk\obj\Debug\net5.0\WebAppCSC4008.Skia.Gtk.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Gtk\obj\Debug\net5.0\WebAppCSC4008.Skia.Gtk.AssemblyInfoInputs.cache
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Gtk\obj\Debug\net5.0\WebAppCSC4008.Skia.Gtk.AssemblyInfo.cs
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Gtk\obj\Debug\net5.0\WebAppCSC4008.Skia.Gtk.csproj.CoreCompileInputs.cache
