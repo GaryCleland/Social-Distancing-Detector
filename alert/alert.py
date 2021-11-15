@@ -13,17 +13,16 @@ comm = Communicator()
 
 
 def sendToDatabase():
-    """camera, group_size, duration, location, fob_data, date_time, get_class(camera),
+    """camera, group_size, duration, location, fob_data, date_time, get_room(camera),
     get_module(camera), get_course(camera)"""
-    comm.sock.connect('127.0.0.1', 51001)
+    comm.sock.connect(('127.0.0.1', 51001))
     comm.send_msg(comm.sock, "replace")
 
 
 def sendToWebApp():
-    """camera, group_size, duration, location, fob_data, date_time, get_class(camera),
+    """camera, group_size, duration, location, fob_data, date_time, get_room(camera),
     get_module(camera), get_course(camera)"""
-    comm.sock.connect('127.0.0.1', 51000)
-    comm.send_msg(comm.sock, "replace")
+    comm.send_msg(comm.sock, b"replace")
 
 
 def sendAlert(cam, size, time, loc):
@@ -39,13 +38,13 @@ def sendAlert(cam, size, time, loc):
                             str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
     if not checkDuplicates(alert_id):
         sendToWebApp()
-        sendToDatabase()
-    print(cam, size, time, loc)
+        # sendToDatabase()
+    # print(cam, size, time, loc)
 
 
-# retrieve class from DB based on what camera was used
-def get_class():
-    # retrieve class
+# retrieve room from DB based on what camera was used
+def get_room():
+    # retrieve room
     return "test"
 
 
@@ -63,3 +62,4 @@ def get_course():
 
 def checkDuplicates(alert_id):
     """need to store ID in DB"""
+    return False
