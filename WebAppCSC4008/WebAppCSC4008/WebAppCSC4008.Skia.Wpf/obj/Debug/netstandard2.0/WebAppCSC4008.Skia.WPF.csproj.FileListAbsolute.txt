@@ -1,0 +1,5 @@
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf\obj\Debug\netstandard2.0\WebAppCSC4008.Skia.Wpf.csproj.AssemblyReference.cache
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf\obj\Debug\netstandard2.0\WebAppCSC4008.Skia.Wpf.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf\obj\Debug\netstandard2.0\WebAppCSC4008.Skia.Wpf.AssemblyInfoInputs.cache
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf\obj\Debug\netstandard2.0\WebAppCSC4008.Skia.Wpf.AssemblyInfo.cs
+C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Wpf\obj\Debug\netstandard2.0\WebAppCSC4008.Skia.Wpf.csproj.CoreCompileInputs.cache
