@@ -11,7 +11,7 @@ conn = pyodbc.connect(
 class TestGetMethods(unittest.TestCase):
 
     def testDefaultName(self):
-        self.assertEqual(room.getRoomNumber(), "02.27")
+        self.assertEqual(room.getRoomNumber(), "02/27")
 
     def testDefaultModules(self):
         self.assertEqual(room.getModules(), ['CSC4005', 'CSC1036', 'CSC3004'])
@@ -22,8 +22,8 @@ class TestGetMethods(unittest.TestCase):
     def testDefaultMaximumCapacity(self):
         self.assertEqual(room.getMaximumCapacity(), 100)
 
-    def testFullRoomNumber(self):
-        self.assertEqual(room.getFullRoomName(), "CSB 02.27")
+    def testDefaultFullRoomNumber(self):
+        self.assertEqual(room.getFullRoomName(), "CSB 02/27")
 
 # Database retrieval tests
 
@@ -34,7 +34,7 @@ class TestGetMethods(unittest.TestCase):
         for row in cursor.fetchall():
             room_number = row[0]
             test_room = Room.Room(room_number=room_number)
-        self.assertEqual(test_room.getRoomNumber(), "01.16")
+        self.assertEqual(test_room.getRoomNumber(), "0G/216")
 
     def testDBBuilding(self):
         cursor = conn.cursor()
@@ -71,7 +71,7 @@ class TestGetMethods(unittest.TestCase):
             room_number = row[0]
             building = row[1]
             test_room = Room.Room(room_number=room_number, building=building)
-        self.assertEqual(test_room.getFullRoomName(), 'DKB 01.16')
+        self.assertEqual(test_room.getFullRoomName(), 'DKB 0G/216')
 
 
 if __name__ == '__main__':

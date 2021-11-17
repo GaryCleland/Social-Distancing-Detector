@@ -10,16 +10,13 @@ conn = pyodbc.connect(
 
 class TestGetMethods(unittest.TestCase):
 
-    def testModuleCode(self):
+    def testDefaultModuleCode(self):
         self.assertEqual(module.getModuleCode(), "CSC4008")
 
-    def testRooms(self):
-        self.assertEqual(module.getRooms(), ['CSB 02.27', 'CSB 01.16', 'DKB 03.34'])
+    def testDefaultRooms(self):
+        self.assertEqual(module.getRooms(), ['CSB 02/27', 'CSB 01/16', 'DKB 0G/334'])
 
-    def testCourse(self):
-        self.assertEqual(module.getCourse(), 'EEECS')
-
-    def testLecturer(self):
+    def testDefaultLecturer(self):
         self.assertEqual(module.getLecturer(), 'Barry')
 
 # Database retrieval tests
@@ -49,16 +46,7 @@ class TestGetMethods(unittest.TestCase):
         for row in cursor.fetchall():
             rooms = row[0].split(", ")
             test_module = Module.Module(rooms=rooms)
-        self.assertEqual(test_module.getRooms(), ['ASB 09.18', 'CSB 02.27', 'DKB 01.24'])
-
-    def testDBCourse(self):
-        cursor = conn.cursor()
-        cursor.execute('select Course from Module')
-
-        for row in cursor.fetchall():
-            course = row[0]
-            test_module = Module.Module(course=course)
-        self.assertEqual(test_module.getCourse(), 'ELE')
+        self.assertEqual(test_module.getRooms(), ['ASB 09/18', 'CSB 02/27', 'DKB 0G/124'])
 
 
 if __name__ == '__main__':

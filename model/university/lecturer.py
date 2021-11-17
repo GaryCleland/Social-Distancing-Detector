@@ -1,9 +1,16 @@
 
 
 class Lecturer:
-    def __init__(self, staff_number=None, modules=None):
+    def __init__(self, name=None, staff_number=None, modules=None):
+        self.name = name
         self.staff_number = staff_number
         self.modules = modules
+
+    def getName(self):
+        if self.name is None:
+            return 'Dr. Barry McCollum'
+        else:
+            return self.name
 
     def getStaffNumber(self):
         if self.staff_number is None:

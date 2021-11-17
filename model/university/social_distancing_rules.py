@@ -2,7 +2,7 @@
 
 class SocialDistancingRules:
 
-    def __init__(self, min_safe_distance=None, max_room_capacity=None, max_time_in_proximity=None, date_rule_created = None):
+    def __init__(self, min_safe_distance=None, max_room_capacity=None, max_time_in_proximity=None, date_rule_created=None):
         self.min_safe_distance = min_safe_distance
         self.max_room_capacity = max_room_capacity
         self.max_time_in_proximity = max_time_in_proximity

@@ -1,10 +1,9 @@
 class University:
 
-    def __init__(self, name=None, rooms=None, buildings=None, courses=None, lecturers=None):
+    def __init__(self, name=None, rooms=None, buildings=None, lecturers=None):
         self.name = name
         self.rooms = rooms
         self.buildings = buildings
-        self.courses = courses
         self.lecturers = lecturers
 
     def getName(self):
@@ -15,7 +14,7 @@ class University:
 
     def getRooms(self):
         if self.rooms is None:
-            return ['CSB 02.27', 'CSB 01.03', 'DKB 09.18']
+            return ['CSB 02/27', 'CSB 01/03', 'DKB 0G/118']
         else:
             return self.rooms
 
@@ -25,14 +24,8 @@ class University:
         else:
             return self.buildings
 
-    def getCourses(self):
-        if self.courses is None:
-            return ['EEECS', 'BIT', 'Biology']
-        else:
-            return self.courses
-
     def getLecturers(self):
         if self.lecturers is None:
-            return ['Barry', 'Blesson', 'Vahid']
+            return ['Dr. Barry McCollum', 'Dr. Blesson Varghese', 'Dr. Jesus Martinez del Rincon']
         else:
             return self.lecturers

@@ -9,7 +9,7 @@ class Room:
 
     def getRoomNumber(self):
         if self.room_number is None:
-            return "02.27"
+            return "02/27"
         else:
             return self.room_number
 

@@ -10,13 +10,25 @@ conn = pyodbc.connect(
 
 class TestGetMethods(unittest.TestCase):
 
-    def testStaffNumber(self):
+    def testDefaultName(self):
+        self.assertEqual(lecturer.getName(), 'Dr. Barry McCollum')
+
+    def testDefaultStaffNumber(self):
         self.assertEqual(lecturer.getStaffNumber(), 40203145)
 
-    def testModules(self):
+    def testDefaultModules(self):
         self.assertEqual(lecturer.getModules(), ['CSC4006', 'CSC4005', 'CSC4008'])
 
 # Database retrieval tests
+
+    def testDBName(self):
+        cursor = conn.cursor()
+        cursor.execute('select Lecturer_name from Lecturer')
+
+        for row in cursor.fetchall():
+            name = row[0]
+            test_lecturer = Lecturer.Lecturer(name=name)
+        self.assertEqual(test_lecturer.getName(), 'Dr. Blesson Varghese')
 
     def testDBStaffNumber(self):
         cursor = conn.cursor()

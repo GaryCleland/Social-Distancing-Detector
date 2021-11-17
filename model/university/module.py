@@ -2,11 +2,10 @@
 
 class Module:
 
-    def __init__(self, module_code=None, lecturer=None, rooms=None, course=None):
+    def __init__(self, module_code=None, lecturer=None, rooms=None):
         self.module_code = module_code
         self.lecturer = lecturer
         self.rooms = rooms
-        self.course = course
 
     def getModuleCode(self):
         if self.module_code is None:
@@ -22,13 +21,8 @@ class Module:
 
     def getRooms(self):
         if self.rooms is None:
-            return ['CSB 02.27', 'CSB 01.16', 'DKB 03.34']
+            return ['CSB 02/27', 'CSB 01/16', 'DKB 0G/334']
         else:
             return self.rooms
 
-    def getCourse(self):
-        if self.course is None:
-            return 'EEECS'
-        else:
-            return self.course
         

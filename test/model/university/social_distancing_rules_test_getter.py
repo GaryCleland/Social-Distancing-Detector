@@ -10,16 +10,16 @@ conn = pyodbc.connect(
 
 class TestGetMethods(unittest.TestCase):
 
-    def testMinSafeDistance(self):
+    def testDefaultMinSafeDistance(self):
         self.assertEqual(socialDistancingRules.getMinSafeDistance(), 2)
 
-    def testMaxRoomCapacity(self):
+    def testDefaultMaxRoomCapacity(self):
         self.assertEqual(socialDistancingRules.getMaxRoomCapacity(), 30)
 
-    def testMaxTimeInProximity(self):
+    def testDefaultMaxTimeInProximity(self):
         self.assertEqual(socialDistancingRules.getMaxTimeInProximity(), 15)
 
-    def testDateRuleCreated(self):
+    def testDefaultDateRuleCreated(self):
         self.assertEqual(socialDistancingRules.getDateRuleCreated(), 'Jan 2021')
 
 # Database retrieval tests

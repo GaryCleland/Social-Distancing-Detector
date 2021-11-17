@@ -14,16 +14,13 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(university.getName(), "Queen's")
 
     def testDefaultRooms(self):
-        self.assertEqual(university.getRooms(), ['CSB 02.27', 'CSB 01.03', 'DKB 09.18'])
+        self.assertEqual(university.getRooms(), ['CSB 02/27', 'CSB 01/03', 'DKB 0G/118'])
 
     def testDefaultBuildings(self):
         self.assertEqual(university.getBuildings(), ['CSB', 'ASB', 'ECIT'])
 
-    def testDefaultCourses(self):
-        self.assertEqual(university.getCourses(), ['EEECS', 'BIT', 'Biology'])
-
     def testDefaultLecturers(self):
-        self.assertEqual(university.getLecturers(), ['Barry', 'Blesson', 'Vahid'])
+        self.assertEqual(university.getLecturers(), ['Dr. Barry McCollum', 'Dr. Blesson Varghese', 'Dr. Jesus Martinez del Rincon'])
 
 # Database retrieval tests
 
@@ -43,7 +40,7 @@ class TestGetMethods(unittest.TestCase):
         for row in cursor.fetchall():
             rooms = row[0].split(", ")
             uni = University.University(rooms=rooms)
-        self.assertEqual(uni.getRooms(), ['CSB 02.27', 'CSB 01.13', 'ASB 09.18'])
+        self.assertEqual(uni.getRooms(), ['CSB 02/27', 'CSB 01/13', 'ASB 09/18'])
 
     def testDBBuildings(self):
         cursor = conn.cursor()
@@ -54,15 +51,6 @@ class TestGetMethods(unittest.TestCase):
             uni = University.University(buildings=buildings)
         self.assertEqual(uni.getBuildings(), ['CSB', 'ASB', 'DKB'])
 
-    def testDBCourses(self):
-        cursor = conn.cursor()
-        cursor.execute('select courses from University')
-
-        for row in cursor.fetchall():
-            courses = row[0].split(", ")
-            uni = University.University(courses=courses)
-        self.assertEqual(uni.getCourses(), ['EEECS', 'BIT', 'ELE'])
-
     def testDBLecturers(self):
         cursor = conn.cursor()
         cursor.execute('select lecturers from University')
@@ -70,7 +58,7 @@ class TestGetMethods(unittest.TestCase):
         for row in cursor.fetchall():
             lecturers = row[0].split(", ")
             uni = University.University(lecturers=lecturers)
-        self.assertEqual(uni.getLecturers(), ['Barry', 'Blesson', 'Des'])
+        self.assertEqual(uni.getLecturers(), ['Dr. Barry McCollum', 'Dr. Blesson Varghese', 'Dr.Dave Cutting'])
 
 
 if __name__ == '__main__':
