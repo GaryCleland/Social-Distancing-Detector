@@ -5,7 +5,7 @@ import pyodbc
 module = Module.Module()
 
 conn = pyodbc.connect(
-    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\pault\Documents\CSC4008\University.accdb;')
+    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\..\..\University.accdb;')
 
 
 class TestGetMethods(unittest.TestCase):
