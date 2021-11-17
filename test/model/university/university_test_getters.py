@@ -16,7 +16,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(university.getBuildings(), ['CSB', 'ASB', 'DKB'])
 
     def testCourses(self):
-        self.assertEqual(university.getCourses(), ['EEECS', 'BIT'])
+        self.assertEqual(university.getCourses(), ['EEECS', 'BIT', 'Biology'])
 
     def testLecturers(self):
         self.assertEqual(university.getLecturers(), ['Barry', 'Blesson', 'Vahid'])

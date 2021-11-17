@@ -14,7 +14,7 @@ class Room:
         return "CSB"
 
     def getModules(self):
-        return ['CSC4005', 'CSC1036', 'CSC3004', 'CSC2011']
+        return ['CSC4005', 'CSC1036', 'CSC3004']
 
     def getMaximumCapacity(self):
         return 100

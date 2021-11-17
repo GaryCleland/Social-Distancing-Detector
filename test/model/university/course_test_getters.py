@@ -10,7 +10,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(course.getName(), "EEECS")
 
     def testModules(self):
-        self.assertEqual(course.getModules(), ['CSC4006', 'CSC2017'])
+        self.assertEqual(course.getModules(), ['CSC4006', 'CSC2017', 'CSC1004'])
 
 
 if __name__ == '__main__':

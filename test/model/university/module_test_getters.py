@@ -10,7 +10,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(module.getModuleCode(), "CSC4008")
 
     def testRooms(self):
-        self.assertEqual(module.getRooms(), ['CSB 02.27'])
+        self.assertEqual(module.getRooms(), ['CSB 02.27', 'CSB 01.16', 'DKB 03.34'])
 
     def testCourse(self):
         self.assertEqual(module.getCourse(), 'EEECS')

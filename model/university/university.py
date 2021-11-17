@@ -17,7 +17,7 @@ class University:
         return ['CSB', 'ASB', 'DKB']
 
     def getCourses(self):
-        return ['EEECS', 'BIT']
+        return ['EEECS', 'BIT', 'Biology']
 
     def getLecturers(self):
         return ['Barry', 'Blesson', 'Vahid']

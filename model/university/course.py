@@ -10,5 +10,5 @@ class Course:
         return 'EEECS'
 
     def getModules(self):
-        return ['CSC4006', 'CSC2017']
+        return ['CSC4006', 'CSC2017', 'CSC1004']
 

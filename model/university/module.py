@@ -15,7 +15,7 @@ class Module:
         return 'Barry'
 
     def getRooms(self):
-        return ['CSB 02.27']
+        return ['CSB 02.27', 'CSB 01.16', 'DKB 03.34']
 
     def getCourse(self):
         return 'EEECS'

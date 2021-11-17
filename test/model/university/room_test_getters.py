@@ -10,7 +10,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(room.getRoomNumber(), "02.27")
 
     def testModules(self):
-        self.assertEqual(room.getModules(), ['CSC4005', 'CSC1036', 'CSC3004', 'CSC2011'])
+        self.assertEqual(room.getModules(), ['CSC4005', 'CSC1036', 'CSC3004'])
 
     def testBuilding(self):
         self.assertEqual(room.getBuilding(), 'CSB')
