@@ -25,7 +25,7 @@ class TestGetMethods(unittest.TestCase):
         for row in cursor.fetchall():
             name = row[0]
             test_course = Course.Course(name=name)
-        self.assertEqual(test_course.getName(), 'ELE')
+        self.assertEqual(test_course.getName(), 'BIT')
 
     def testDBModules(self):
         cursor = conn.cursor()
