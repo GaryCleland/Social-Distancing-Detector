@@ -9,14 +9,26 @@ class Module:
         self.course = course
 
     def getModuleCode(self):
-        return 'CSC4008'
+        if self.module_code is None:
+            return 'CSC4008'
+        else:
+            return self.module_code
 
     def getLecturer(self):
-        return 'Barry'
+        if self.lecturer is None:
+            return 'Barry'
+        else:
+            return self.lecturer
 
     def getRooms(self):
-        return ['CSB 02.27', 'CSB 01.16', 'DKB 03.34']
+        if self.rooms is None:
+            return ['CSB 02.27', 'CSB 01.16', 'DKB 03.34']
+        else:
+            return self.rooms
 
     def getCourse(self):
-        return 'EEECS'
-
+        if self.course is None:
+            return 'EEECS'
+        else:
+            return self.course
+        

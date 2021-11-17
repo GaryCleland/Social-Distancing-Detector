@@ -7,8 +7,14 @@ class Course:
         self.modules = modules
 
     def getName(self):
-        return 'EEECS'
+        if self.name is None:
+            return 'EEECS'
+        else:
+            return self.name
 
     def getModules(self):
-        return ['CSC4006', 'CSC2017', 'CSC1004']
+        if self.modules is None:
+            return ['CSC4006', 'CSC2017', 'CSC1004']
+        else:
+            return self.modules
 

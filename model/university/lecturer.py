@@ -6,7 +6,13 @@ class Lecturer:
         self.modules = modules
 
     def getStaffNumber(self):
-        return 'Test40203145'
+        if self.staff_number is None:
+            return 40203145
+        else:
+            return self.staff_number
 
     def getModules(self):
-        return ['CSC4006', 'CSC4005', 'CSC4008']
+        if self.modules is None:
+            return ['CSC4006', 'CSC4005', 'CSC4008']
+        else:
+            return self.modules

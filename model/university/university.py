@@ -8,16 +8,31 @@ class University:
         self.lecturers = lecturers
 
     def getName(self):
-        return "Queen's University"
+        if self.name is None:
+            return "Queen's"
+        else:
+            return self.name
 
     def getRooms(self):
-        return ['CSB 02.27', 'CSB 01.03', 'ASB 09.18']
+        if self.rooms is None:
+            return ['CSB 02.27', 'CSB 01.03', 'DKB 09.18']
+        else:
+            return self.rooms
 
     def getBuildings(self):
-        return ['CSB', 'ASB', 'DKB']
+        if self.buildings is None:
+            return ['CSB', 'ASB', 'ECIT']
+        else:
+            return self.buildings
 
     def getCourses(self):
-        return ['EEECS', 'BIT', 'Biology']
+        if self.courses is None:
+            return ['EEECS', 'BIT', 'Biology']
+        else:
+            return self.courses
 
     def getLecturers(self):
-        return ['Barry', 'Blesson', 'Vahid']
+        if self.lecturers is None:
+            return ['Barry', 'Blesson', 'Vahid']
+        else:
+            return self.lecturers

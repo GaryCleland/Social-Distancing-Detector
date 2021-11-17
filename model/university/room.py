@@ -8,14 +8,29 @@ class Room:
         self.maximum_capacity = maximum_capacity
 
     def getRoomNumber(self):
-        return "02.27"
+        if self.room_number is None:
+            return "02.27"
+        else:
+            return self.room_number
 
     def getBuilding(self):
-        return "CSB"
+        if self.building is None:
+            return "CSB"
+        else:
+            return self.building
 
     def getModules(self):
-        return ['CSC4005', 'CSC1036', 'CSC3004']
+        if self.modules is None:
+            return ['CSC4005', 'CSC1036', 'CSC3004']
+        else:
+            return self.modules
 
     def getMaximumCapacity(self):
-        return 100
+        if self.maximum_capacity is None:
+            return 100
+        else:
+            return self.maximum_capacity
+
+    def getFullRoomName(self):
+        return self.getBuilding() + " " + self.getRoomNumber()
 
