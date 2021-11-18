@@ -1,11 +1,10 @@
 import unittest
 import model.university.university as University
-import pyodbc
+import university_communicator
 
 university = University.University()
 
-conn = pyodbc.connect(
-    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\..\..\University.accdb;')
+conn = university_communicator.Communicator()
 
 
 class TestGetMethods(unittest.TestCase):
@@ -25,8 +24,7 @@ class TestGetMethods(unittest.TestCase):
 # Database retrieval tests
 
     def testDBName(self):
-        cursor = conn.cursor()
-        cursor.execute('select university_name from University')
+        cursor = conn.cursor.execute('select university_name from University')
 
         for row in cursor.fetchall():
             name = row[0]
@@ -34,8 +32,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(uni.getName(), "Queen's University")
 
     def testDBRooms(self):
-        cursor = conn.cursor()
-        cursor.execute('select rooms from University')
+        cursor = conn.cursor.execute('select rooms from University')
 
         for row in cursor.fetchall():
             rooms = row[0].split(", ")
@@ -43,8 +40,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(uni.getRooms(), ['CSB 02/27', 'CSB 01/13', 'ASB 09/18'])
 
     def testDBBuildings(self):
-        cursor = conn.cursor()
-        cursor.execute('select buildings from University')
+        cursor = conn.cursor.execute('select buildings from University')
 
         for row in cursor.fetchall():
             buildings = row[0].split(", ")
@@ -52,8 +48,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(uni.getBuildings(), ['CSB', 'ASB', 'DKB'])
 
     def testDBLecturers(self):
-        cursor = conn.cursor()
-        cursor.execute('select lecturers from University')
+        cursor = conn.cursor.execute('select lecturers from University')
 
         for row in cursor.fetchall():
             lecturers = row[0].split(", ")

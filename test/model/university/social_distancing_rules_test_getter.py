@@ -1,11 +1,10 @@
 import unittest
 import model.university.social_distancing_rules as SocialDistancingRules
-import pyodbc
+import university_communicator
 
 socialDistancingRules = SocialDistancingRules.SocialDistancingRules()
 
-conn = pyodbc.connect(
-    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\..\..\University.accdb;')
+conn = university_communicator.Communicator()
 
 
 class TestGetMethods(unittest.TestCase):
@@ -25,8 +24,7 @@ class TestGetMethods(unittest.TestCase):
 # Database retrieval tests
 
     def testDBMinSafeDistance(self):
-        cursor = conn.cursor()
-        cursor.execute('select Min_safe_distance from SocialDistancingRules')
+        cursor = conn.cursor.execute('select Min_safe_distance from SocialDistancingRules')
 
         for row in cursor.fetchall():
             min_safe_distance = int(row[0])
@@ -34,8 +32,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_rules.getMinSafeDistance(), 1)
 
     def testDBMaxRoomCapacity(self):
-        cursor = conn.cursor()
-        cursor.execute('select Max_room_capacity from SocialDistancingRules')
+        cursor = conn.cursor.execute('select Max_room_capacity from SocialDistancingRules')
 
         for row in cursor.fetchall():
             max_room_capacity = int(row[0])
@@ -43,8 +40,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_rules.getMaxRoomCapacity(), 35)
 
     def testDBMaxTimeInProximity(self):
-        cursor = conn.cursor()
-        cursor.execute('select Max_time_in_proximity from SocialDistancingRules')
+        cursor = conn.cursor.execute('select Max_time_in_proximity from SocialDistancingRules')
 
         for row in cursor.fetchall():
             max_time_in_proximity = int(row[0])
@@ -52,8 +48,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_rules.getMaxTimeInProximity(), 20)
 
     def testDBDateRuleCreated(self):
-        cursor = conn.cursor()
-        cursor.execute('select Date_rule_created from SocialDistancingRules')
+        cursor = conn.cursor.execute('select Date_rule_created from SocialDistancingRules')
 
         for row in cursor.fetchall():
             date_rule_created = row[0]

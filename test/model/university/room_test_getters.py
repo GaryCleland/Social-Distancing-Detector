@@ -1,11 +1,10 @@
 import unittest
 import model.university.room as Room
-import pyodbc
+import university_communicator
 
 room = Room.Room()
 
-conn = pyodbc.connect(
-    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\..\..\University.accdb;')
+conn = university_communicator.Communicator()
 
 
 class TestGetMethods(unittest.TestCase):
@@ -28,8 +27,7 @@ class TestGetMethods(unittest.TestCase):
 # Database retrieval tests
 
     def testDBRoomNumber(self):
-        cursor = conn.cursor()
-        cursor.execute('select Room_number from Room')
+        cursor = conn.cursor.execute('select Room_number from Room')
 
         for row in cursor.fetchall():
             room_number = row[0]
@@ -37,8 +35,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_room.getRoomNumber(), "0G/216")
 
     def testDBBuilding(self):
-        cursor = conn.cursor()
-        cursor.execute('select Building from Room')
+        cursor = conn.cursor.execute('select Building from Room')
 
         for row in cursor.fetchall():
             building = row[0]
@@ -46,8 +43,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_room.getBuilding(), 'DKB')
 
     def testDBModules(self):
-        cursor = conn.cursor()
-        cursor.execute('select Modules from Room')
+        cursor = conn.cursor.execute('select Modules from Room')
 
         for row in cursor.fetchall():
             modules = row[0].split(", ")
@@ -55,8 +51,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_room.getModules(), ['CSC4005', 'CSC1036', 'ELE1004'])
 
     def testDBMaxCapacity(self):
-        cursor = conn.cursor()
-        cursor.execute('select Maximum_capacity from Room')
+        cursor = conn.cursor.execute('select Maximum_capacity from Room')
 
         for row in cursor.fetchall():
             max_capacity = int(row[0])
@@ -64,8 +59,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_room.getMaximumCapacity(), 150)
 
     def testDBFullRoomNumber(self):
-        cursor = conn.cursor()
-        cursor.execute('select Room_number, Building from Room')
+        cursor = conn.cursor.execute('select Room_number, Building from Room')
 
         for row in cursor.fetchall():
             room_number = row[0]

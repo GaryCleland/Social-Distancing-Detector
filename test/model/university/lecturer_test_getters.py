@@ -1,11 +1,10 @@
 import unittest
 import model.university.lecturer as Lecturer
-import pyodbc
+import university_communicator
 
 lecturer = Lecturer.Lecturer()
 
-conn = pyodbc.connect(
-    r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\..\..\University.accdb;')
+comm = university_communicator.Communicator()
 
 
 class TestGetMethods(unittest.TestCase):
@@ -22,8 +21,7 @@ class TestGetMethods(unittest.TestCase):
 # Database retrieval tests
 
     def testDBName(self):
-        cursor = conn.cursor()
-        cursor.execute('select Lecturer_name from Lecturer')
+        cursor = comm.cursor.execute('select Lecturer_name from Lecturer')
 
         for row in cursor.fetchall():
             name = row[0]
@@ -31,8 +29,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_lecturer.getName(), 'Dr. Blesson Varghese')
 
     def testDBStaffNumber(self):
-        cursor = conn.cursor()
-        cursor.execute('select Staff_number from Lecturer')
+        cursor = comm.cursor.execute('select Staff_number from Lecturer')
 
         for row in cursor.fetchall():
             staff_number = int(row[0])
@@ -40,8 +37,7 @@ class TestGetMethods(unittest.TestCase):
         self.assertEqual(test_lecturer.getStaffNumber(), 40203055)
 
     def testDBModules(self):
-        cursor = conn.cursor()
-        cursor.execute('select Modules from Lecturer')
+        cursor = comm.cursor.execute('select Modules from Lecturer')
 
         for row in cursor.fetchall():
             modules = row[0].split(", ")
