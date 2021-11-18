@@ -79,7 +79,7 @@ class CameraDetection:
     def createAlert(self, frames, group_size):
         duration = frames / self.frame_rate
         if duration > 0:
-            Alert.sendAlert(self.cam, group_size, frames / self.frame_rate, "left")
+            Alert.sendAlert(self.cam, group_size, frames / self.frame_rate)
 
     def getDuration(self, temp):
         for x in range(0, len(self.groups)):

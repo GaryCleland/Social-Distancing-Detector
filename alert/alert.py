@@ -19,9 +19,10 @@ lecturer = lec.Lecturer()
 
 
 def sendToDatabase():
-    comm.cursor.execute("INSERT OR IGNORE INTO Alert VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-                        (alert_id, 1, camera, group_size, fob_data, date_time, duration, get_room(),
-                         get_module(), get_university(), get_lecturer(), ""))
+    comm.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
 
     comm.conn.commit()
 
