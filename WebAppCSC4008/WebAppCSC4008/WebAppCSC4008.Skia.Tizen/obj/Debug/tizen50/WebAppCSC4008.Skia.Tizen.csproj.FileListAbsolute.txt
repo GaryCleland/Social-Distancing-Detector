@@ -1,5 +1,0 @@
-C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Tizen\obj\Debug\tizen50\WebAppCSC4008.Skia.Tizen.csproj.AssemblyReference.cache
-C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Tizen\obj\Debug\tizen50\WebAppCSC4008.Skia.Tizen.GeneratedMSBuildEditorConfig.editorconfig
-C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Tizen\obj\Debug\tizen50\WebAppCSC4008.Skia.Tizen.AssemblyInfoInputs.cache
-C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Tizen\obj\Debug\tizen50\WebAppCSC4008.Skia.Tizen.AssemblyInfo.cs
-C:\dev\WebAppCSC4008\WebAppCSC4008\WebAppCSC4008.Skia.Tizen\obj\Debug\tizen50\WebAppCSC4008.Skia.Tizen.csproj.CoreCompileInputs.cache
