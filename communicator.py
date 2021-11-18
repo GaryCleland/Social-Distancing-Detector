@@ -1,10 +1,11 @@
-import socket
+
+import sqlite3
 
 
 class Communicator(object):
     def __init__(self):
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect(('127.0.0.1', 51000))
+        self.conn = sqlite3.connect('Alert.db', check_same_thread=False)
+        self.cursor = self.conn.cursor()
 
-    def send_msg(self, sock, msg):
-        sock.send(msg)
+    def __del__(self):
+        self.conn.close()
