@@ -18,6 +18,8 @@ namespace WebAppCSC4008.Models
             this.ID = id;
             this.Name = name;
             this.Status = status;
+            this.Room = room;
+            this.University = university;
         }
 
         public static List<CameraAvailability> cameras()
