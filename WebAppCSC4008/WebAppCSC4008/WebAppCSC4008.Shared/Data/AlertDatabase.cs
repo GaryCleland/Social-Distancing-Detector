@@ -18,9 +18,15 @@ namespace WebAppCSC4008.Data
         {
             string DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alert.db");
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
-            //Stream embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Alert.db"); // NameOfProgram.NameOfDB.DBExtension
-            //Stream embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Droid.Alert2.db"); // NameOfProgram.NameOfDB.DBExtension
-            Stream embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Wasm.Alert3.db"); // NameOfProgram.NameOfDB.DBExtension
+            Stream embeddedDatabaseStream = null;
+
+#if NETFX_CORE
+            embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Alert.db"); // NameOfProgram.NameOfDB.DBExtension
+#elif __ANDROID__
+            embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Droid.Alert2.db"); // NameOfProgram.NameOfDB.DBExtension
+#elif __WASM__
+            embeddedDatabaseStream = assembly.GetManifestResourceStream("WebAppCSC4008.Wasm.Alert3.db"); // NameOfProgram.NameOfDB.DBExtension
+#endif
 
             FileStream fileStreamToWrite = File.Create(DatabasePath);
             embeddedDatabaseStream.Seek(0, SeekOrigin.Begin);
