@@ -19,12 +19,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Alert.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CameraAvailability.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AlertCell.xaml.cs">
       <DependentUpon>AlertCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CameraAvailbility.xaml.cs">
-      <DependentUpon>CameraAvailbility.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CameraAvailability.xaml.cs">
+      <DependentUpon>CameraAvailability.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
@@ -38,7 +38,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\CameraAvailbility.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\CameraAvailability.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
