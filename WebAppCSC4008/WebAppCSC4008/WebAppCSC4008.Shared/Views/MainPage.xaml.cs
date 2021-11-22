@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using WebAppCSC4008.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,10 +29,18 @@ namespace WebAppCSC4008
         {
             this.InitializeComponent();
 
+            //var alerts = App.AlertDatabase.GetDatabase().Table<Alert>().ToList();
+
+            Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
+
             AlertView.ItemsSource = Alerts;
         }
 
         public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
 
+        public IEnumerable<Alert> GetAlerts()
+        {
+            return App.AlertDatabase.GetAlerts();
+        }
     }
 }
