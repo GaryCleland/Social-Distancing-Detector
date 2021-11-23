@@ -8,14 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <local:Header/>
-        <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <local:AlertCell/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <local:Header/>
+            <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:AlertCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
