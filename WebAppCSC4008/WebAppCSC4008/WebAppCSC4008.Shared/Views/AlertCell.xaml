@@ -40,10 +40,6 @@
                     <Run Text="for"/>
                     <Run Text="{Binding Duration}" FontWeight="Bold"/>
                 </TextBlock>
-                <!--<TextBlock Grid.Row="0" Text="{x:Bind Alert.ID}" FontWeight="ExtraBold"/>
-                <TextBlock Grid.Row="1" Text="Queen's University Belfast, CSB 02/027"/>
-                <TextBlock Grid.Row="2" Text="CSC4008, Dr. Barry McCollum"/>
-                <TextBlock Grid.Row="3" Text="2 people at 10/11/21 11:34am for 34m 12s"/>-->
             </Grid>
         </Frame>
     </Grid>

@@ -16,6 +16,7 @@ namespace WebAppCSC4008.Data
 
         public AlertDatabase()
         {
+#if !__WASM__
             string DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alert.db");
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
             Stream embeddedDatabaseStream = null;
@@ -35,11 +36,7 @@ namespace WebAppCSC4008.Data
 
             Database = new SQLiteConnection(DatabasePath);
             Database.CreateTable<Alert>();
-        }
-
-        public List<Alert> GetAlerts()
-        {
-            return Database.Table<Alert>().ToList();
+#endif
         }
 
         public SQLiteConnection GetDatabase()
