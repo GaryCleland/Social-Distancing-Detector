@@ -50,7 +50,7 @@ namespace WebAppCSC4008
             Module = "CSC4008",
             Lecturer = "Dr. Barry McCollum",
             Group_size = 2,
-            Date_time = new DateTime(2021, 11, 10, 10, 43, 12),
+            Date_time = "10/11/2021 10:43:12",
             Duration = 2057,
         };
 
@@ -62,7 +62,7 @@ namespace WebAppCSC4008
             Module = "CSC4005",
             Lecturer = "Dr. Blesson Varghese",
             Group_size = 12,
-            Date_time = new DateTime(2021, 11, 10, 16, 01, 2),
+            Date_time = "10/11/2021 16:01:02",
             Duration = 305,
         };
 
@@ -74,7 +74,7 @@ namespace WebAppCSC4008
             Module = "CSC4008",
             Lecturer = "Dr. Barry McCollum",
             Group_size = 3,
-            Date_time = new DateTime(2021, 10, 9, 12, 00, 23),
+            Date_time = "09/10/2021 12:00:23",
             Duration = 969,
         };
     }

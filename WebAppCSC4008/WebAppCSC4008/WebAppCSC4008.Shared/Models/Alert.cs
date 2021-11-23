@@ -12,7 +12,7 @@ namespace WebAppCSC4008.Models
         public string Camera { get; set; }
         public int Group_size { get; set; }
         public int Fob_data { get; set; }
-        public DateTime Date_time { get; set; }
+        public string Date_time { get; set; }
         public double Duration { get; set; }
         public string Room { get; set; }
         public string Module { get; set; }
