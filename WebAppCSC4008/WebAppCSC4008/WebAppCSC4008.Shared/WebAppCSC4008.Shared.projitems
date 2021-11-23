@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\AlertDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Alert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Output\CameraDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AlertCell.xaml.cs">
       <DependentUpon>AlertCell.xaml</DependentUpon>
     </Compile>
@@ -55,6 +56,7 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Alert.db" />
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
+    <None Include="$(MSBuildThisFileDirectory)CameraStreams.db" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
