@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using WebAppCSC4008.Data;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -175,6 +176,19 @@ namespace WebAppCSC4008
             });
 
             global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
+        }
+
+        private static AlertDatabase alertDatabase;
+        public static AlertDatabase AlertDatabase
+        {
+            get
+            {
+                if (alertDatabase == null)
+                {
+                    alertDatabase = new AlertDatabase();
+                }
+                return alertDatabase;
+            }
         }
     }
 }

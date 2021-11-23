@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using WebAppCSC4008.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -26,63 +27,55 @@ namespace WebAppCSC4008
     {
         public MainPage()
         {
-            Alert Alert1 = new Alert
-            {
-                ID = 523,
-                University = "Queen's University Belfast",
-                Room = "CSB 02/027",
-                Module = "CSC4008",
-                Lecturer = "Dr. Barry McCollum",
-                GroupSize = 2,
-                DateTime = new DateTime(2021, 11, 10, 10, 43, 12),
-                Duration = new TimeSpan(0, 34, 17),
-            };
+            this.InitializeComponent();
+
+#if __WASM__
             Alerts.Add(Alert1);
             Alerts.Add(Alert2);
             Alerts.Add(Alert3);
-
-            this.InitializeComponent();
+#else
+            Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
+#endif
 
             AlertView.ItemsSource = Alerts;
         }
 
+        public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
+
         public Alert Alert1 = new Alert
         {
-            ID = 523,
+            DisplayID = 523,
             University = "Queen's University Belfast",
             Room = "CSB 02/027",
             Module = "CSC4008",
             Lecturer = "Dr. Barry McCollum",
-            GroupSize = 2,
-            DateTime = new DateTime(2021, 11, 10, 10, 43, 12),
-            Duration = new TimeSpan(0, 34, 17),
+            Group_size = 2,
+            Date_time = "10/11/2021 10:43:12",
+            Duration = 2057,
         };
 
         public Alert Alert2 = new Alert
         {
-            ID = 527,
+            DisplayID = 527,
             University = "Queen's University Belfast",
             Room = "ASH 09/005",
             Module = "CSC4005",
             Lecturer = "Dr. Blesson Varghese",
-            GroupSize = 12,
-            DateTime = new DateTime(2021, 11, 10, 16, 01, 2),
-            Duration = new TimeSpan(0, 5, 5),
+            Group_size = 12,
+            Date_time = "10/11/2021 16:01:02",
+            Duration = 305,
         };
 
         public Alert Alert3 = new Alert
         {
-            ID = 463,
+            DisplayID = 463,
             University = "Queen's University Belfast",
             Room = "DKB 0G/115",
             Module = "CSC4008",
             Lecturer = "Dr. Barry McCollum",
-            GroupSize = 3,
-            DateTime = new DateTime(2021, 10, 9, 12, 00, 23),
-            Duration = new TimeSpan(0, 16, 9),
+            Group_size = 3,
+            Date_time = "09/10/2021 12:00:23",
+            Duration = 969,
         };
-
-        public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
-
     }
 }

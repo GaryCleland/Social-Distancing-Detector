@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
@@ -22,6 +22,11 @@
     <UpToDateCheckInput Include="..\WebAppCSC4008.Shared\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Alert2.db" />
+    <None Remove="Alert3.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Alert3.db" />
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +48,10 @@
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.7" IncludeAssets="none"/>
     <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.0.1" />
+    <PackageReference Include="Uno.SQLitePCLRaw.provider.wasm" Version="3.1.1" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls.DataGrid" Version="7.0.0" />
     <PackageReference Include="Uno.UI.WebAssembly" Version="3.11.6" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="3.11.6" Condition="'$(Configuration)'=='Debug'" />
