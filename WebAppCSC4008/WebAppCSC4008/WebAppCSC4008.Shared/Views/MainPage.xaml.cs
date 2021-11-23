@@ -29,18 +29,53 @@ namespace WebAppCSC4008
         {
             this.InitializeComponent();
 
-            //var alerts = App.AlertDatabase.GetDatabase().Table<Alert>().ToList();
-
+#if __WASM__
+            Alerts.Add(Alert1);
+            Alerts.Add(Alert2);
+            Alerts.Add(Alert3);
+#else
             Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
+#endif
 
             AlertView.ItemsSource = Alerts;
         }
 
         public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
 
-        public IEnumerable<Alert> GetAlerts()
+        public Alert Alert1 = new Alert
         {
-            return App.AlertDatabase.GetAlerts();
-        }
+            DisplayID = 523,
+            University = "Queen's University Belfast",
+            Room = "CSB 02/027",
+            Module = "CSC4008",
+            Lecturer = "Dr. Barry McCollum",
+            Group_size = 2,
+            Date_time = new DateTime(2021, 11, 10, 10, 43, 12),
+            Duration = 2057,
+        };
+
+        public Alert Alert2 = new Alert
+        {
+            DisplayID = 527,
+            University = "Queen's University Belfast",
+            Room = "ASH 09/005",
+            Module = "CSC4005",
+            Lecturer = "Dr. Blesson Varghese",
+            Group_size = 12,
+            Date_time = new DateTime(2021, 11, 10, 16, 01, 2),
+            Duration = 305,
+        };
+
+        public Alert Alert3 = new Alert
+        {
+            DisplayID = 463,
+            University = "Queen's University Belfast",
+            Room = "DKB 0G/115",
+            Module = "CSC4008",
+            Lecturer = "Dr. Barry McCollum",
+            Group_size = 3,
+            Date_time = new DateTime(2021, 10, 9, 12, 00, 23),
+            Duration = 969,
+        };
     }
 }
