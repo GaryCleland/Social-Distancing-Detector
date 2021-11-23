@@ -2,3 +2,4 @@ numpy
 opencv-python
 imutils
 sqlite3
+pybluez

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-from bt_proximity import BluetoothRSSI
+from bt_rssi import BluetoothRSSI
 import datetime
 import time
 import threading
 import sys
 
-# List of bluetooth addresses to scan
+# List of bluetooth_input addresses to scan
 BT_ADDR_LIST = ['78:00:9E:73:1A:97', '44:C6:5D:57:66:70']
 DAILY = True  # Set to True to invoke callback only once per day per address
 DEBUG = True  # Set to True to print out debug messages
@@ -14,12 +14,12 @@ SLEEP = 1
 
 
 def dummy_callback():
-    print "Dummy callback function invoked"
+    print("Dummy callback function invoked")
 
 
 def bluetooth_listen(
         addr, threshold, callback, sleep=1, daily=True, debug=False):
-    """Scans for RSSI value of bluetooth address in a loop. When the value is
+    """Scans for RSSI value of bluetooth_input address in a loop. When the value is
     within the threshold, calls the callback function.
 
     @param: addr: Bluetooth address
@@ -46,8 +46,8 @@ def bluetooth_listen(
     while True:
         rssi = b.get_rssi()
         if debug:
-            print "---"
-            print "addr: {}, rssi: {}".format(addr, rssi)
+            print("---")
+            print ("addr: {}, rssi: {}".format(addr, rssi))
         # Sleep and then skip to next iteration if device not found
         if rssi is None:
             time.sleep(sleep)
@@ -63,7 +63,7 @@ def bluetooth_listen(
                     datetime.timedelta(days=1)
                 until_tomorrow = (tomorrow - now).seconds
                 if debug:
-                    print "Seconds until tomorrow: {}".format(until_tomorrow)
+                    print ("Seconds until tomorrow: {}".format(until_tomorrow))
                 else:
                     time.sleep(until_tomorrow)
         # Delay between iterations
@@ -73,7 +73,7 @@ def bluetooth_listen(
 def start_thread(addr, callback, threshold=THRESHOLD, sleep=SLEEP,
         daily=DAILY, debug=DEBUG):
     """Helper function that creates and starts a thread to listen for the
-    bluetooth address.
+    bluetooth_input address.
 
     @param: addr: Bluetooth address
     @type: addr: str
@@ -117,7 +117,7 @@ def start_thread(addr, callback, threshold=THRESHOLD, sleep=SLEEP,
 
 def main():
     if not BT_ADDR_LIST:
-        print "Please edit this file and set BT_ADDR_LIST variable"
+        print ("Please edit this file and set BT_ADDR_LIST variable")
         sys.exit(1)
     threads = []
     for addr in BT_ADDR_LIST:

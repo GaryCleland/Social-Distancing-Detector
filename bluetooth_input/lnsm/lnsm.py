@@ -8,7 +8,7 @@ BT_ADDRS = ['70:00:9E:73:1A:97', '44:C6:5D:57:66:70']
 NUM_LOOP = 30
 
 def print_usage():
-    print "Usage: python test_address.py <bluetooth-address> [number-of-requests]"
+    print( "Usage: python test_address.py <bluetooth_input-address> [number-of-requests]")
 
 
 def main():
@@ -64,14 +64,14 @@ def main():
             #print "Average Error=  " + str(avg_error)
             #print "Error=  " + str(error)
             #print "Approximate Distance:" + str(distance)
-	    print "Average Error 1 =  " + str(avg_error_1)
-            print "Error 1=  " + str(error_1)
-            print "Approximate Distance 1:" + str(distance_1_2)
+	    print ("Average Error 1 =  " + str(avg_error_1))
+            print ("Error 1=  " + str(error_1))
+            print ("Approximate Distance 1:" + str(distance_1_2))
             #print "RSSI: " + str(rssi_bt)
-	    print "RSSI 1: " + str(rssi_bt_1)
-	    print "RSSI 2: " + str(rssi_bt_2)
-            print "Count: " + str(count)
-            print " "
+	    print( "RSSI 1: " + str(rssi_bt_1))
+	    print ("RSSI 2: " + str(rssi_bt_2))
+            print( "Count: " + str(count))
+            print (" ")
         time.sleep(1)
 
 

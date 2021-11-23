@@ -23,13 +23,13 @@ class BluetoothRSSI(object):
         reqstr = struct.pack(
             "6sB17s", bt.str2ba(self.addr), bt.ACL_LINK, "\0" * 17)
         request = array.array("c", reqstr)
-        handle = fcntl.ioctl(self.hci_fd, bt.HCIGETCONNINFO, request, 1)
+        handle = fcntl.ioctl(self.hci_fd, bt.HCHCIGETCONNINFO, request, 1)
         handle = struct.unpack("8xH14x", request.tostring())[0]
         self.cmd_pkt = struct.pack('H', handle)
 
     def connect(self):
         """Connects to the Bluetooth address"""
-        self.bt_sock.connect_ex((self.addr, 1))  # PSM 1 - Service Discovery
+        self.bt_sock.connect((self.addr, 1))  # PSM 1 - Service Discovery
         self.connected = True
 
     def get_rssi(self):
