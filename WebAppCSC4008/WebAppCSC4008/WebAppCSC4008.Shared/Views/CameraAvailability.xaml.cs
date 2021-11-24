@@ -24,19 +24,24 @@ namespace WebAppCSC4008
     /// </summary>
     public sealed partial class CameraAvailability : Page
     {
+        private List<Camera> cams = new List<Camera>(Camera.cameras());
         public CameraAvailability()
         {
             this.InitializeComponent();
-            dataGrid.ItemsSource = Camera.cameras();
+            dataGrid.ItemsSource = cams;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string text = TextBox1.Text;
+            cams.Add(new Camera(cams.Count+1, text, "Offline", "CSB 01/16", "Queen's University Belfast"));
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = cams;
             if (!string.IsNullOrEmpty(text))
             {
                 CameraDatabase cameraDatabase = new CameraDatabase(text);
             }
+            TextBox1.Text = "";
         }
     }
 }
