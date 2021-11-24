@@ -25,6 +25,7 @@ namespace WebAppCSC4008
     public sealed partial class CameraAvailability : Page
     {
         private List<Camera> cams = new List<Camera>(Camera.cameras());
+        private Random rand = new Random();
         public CameraAvailability()
         {
             this.InitializeComponent();
@@ -34,7 +35,7 @@ namespace WebAppCSC4008
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string text = TextBox1.Text;
-            cams.Add(new Camera(cams.Count+1, text, "Offline", "CSB 01/16", "Queen's University Belfast"));
+            cams.Add(new Camera(cams.Count+1, text, status(rand.Next(0,2)), room(rand.Next(0, 3)), "Queen's University Belfast"));
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = cams;
             if (!string.IsNullOrEmpty(text))
@@ -42,6 +43,23 @@ namespace WebAppCSC4008
                 CameraDatabase cameraDatabase = new CameraDatabase(text);
             }
             TextBox1.Text = "";
+        }
+
+        private string room(int id)
+        {
+            List<string> list = new List<string>();
+            list.Add("CSB 01/16");
+            list.Add("ASH 07/27");
+            list.Add("DKB 01/11");
+            return list[id];
+        }
+
+        private string status(int id)
+        {
+            List<string> list = new List<string>();
+            list.Add("Online");
+            list.Add("Offline");
+            return list[id];
         }
     }
 }
