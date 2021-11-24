@@ -33,7 +33,6 @@ namespace WebAppCSC4008
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string text = TextBox1.Text;
-            Button1.Content = text;
             if (!string.IsNullOrEmpty(text))
             {
                 CameraDatabase cameraDatabase = new CameraDatabase(text);

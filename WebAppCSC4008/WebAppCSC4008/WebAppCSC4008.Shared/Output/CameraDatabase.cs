@@ -13,7 +13,7 @@ namespace WebAppCSC4008.Output
 
         public CameraDatabase(string video)
         {
-            var DatabasePath = Path.Combine("C:\\sqlite", "CameraStreams.db");
+            var DatabasePath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "CameraStreams.db");
             Database = new SQLiteConnection(DatabasePath);
             var exists = File.Exists(DatabasePath);
             if (!exists)
