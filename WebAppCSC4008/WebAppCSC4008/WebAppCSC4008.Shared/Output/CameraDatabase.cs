@@ -8,7 +8,7 @@ namespace WebAppCSC4008.Output
 {
     public class CameraDatabase
     {
-#if __WASM__
+#if __WASM__ || NETFX_CORE
         static SQLiteConnection Database;
 
         public CameraDatabase(string video)

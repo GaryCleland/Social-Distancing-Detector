@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using WebAppCSC4008.Models;
+using WebAppCSC4008.Output;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -27,6 +28,16 @@ namespace WebAppCSC4008
         {
             this.InitializeComponent();
             dataGrid.ItemsSource = Camera.cameras();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string text = TextBox1.Text;
+            Button1.Content = text;
+            if (!string.IsNullOrEmpty(text))
+            {
+                CameraDatabase cameraDatabase = new CameraDatabase(text);
+            }
         }
     }
 }
