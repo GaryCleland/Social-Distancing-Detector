@@ -42,7 +42,6 @@ def sendAlert(cam, size, time):
     # used to remove duplicates
     alert_id = hashlib.sha1(str.encode(str(group_size)) + str.encode(str(camera)) +
                             str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
-    # TODO: implement check Dupes
     sendToDatabase()
 
 
