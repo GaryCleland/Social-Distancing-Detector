@@ -26,6 +26,7 @@ def sendToDatabase():
 
     comm.conn.commit()
 
+
 def sendToBluetoothDatabase():
     comm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
@@ -33,6 +34,12 @@ def sendToBluetoothDatabase():
                          get_module(), get_university(), get_lecturer()))
 
     comm.conn.commit()
+
+
+def appendToDatabase():
+    comm.cursor.execute("UPDATE Alert SET Duration = Duration + (?) WHERE Id = (?)", (duration, alert_id))
+    comm.conn.commit()
+
 
 def sendToWebApp():
     """camera, group_size, duration, fob_data, date_time, get_room(camera),
@@ -49,8 +56,10 @@ def sendAlert(cam, size, time):
     # used to remove duplicates
     alert_id = hashlib.sha1(str.encode(str(group_size)) + str.encode(str(camera)) +
                             str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
-    # TODO: implement check Dupes
+    if isDuplicate(alert_id):
+        appendToDatabase()
     sendToDatabase()
+
 
 def sendBluetoothAlert(cam, size, time):
     global camera, group_size, duration, location, fob_data, date_time, alert_id
@@ -88,6 +97,11 @@ def get_university():
     return university.getName()
 
 
-def checkDuplicates(alert_id):
-    """need to store ID in DB"""
-    return False
+def isDuplicate(Id):
+    exe = "SELECT * FROM Alert WHERE Id=(?)"
+    comm.cursor.execute(exe, (Id,))
+    res = comm.cursor.fetchall()
+    if not res:
+        return False
+    return True
+
