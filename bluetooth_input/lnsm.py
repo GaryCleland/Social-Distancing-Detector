@@ -2,7 +2,7 @@ from bt_rssi import BluetoothRSSI
 import time
 import sys
 import math
-
+import random
 
 sys.path.append('/home/linux/csc4008-teamg/')
 import alert.alert as Alert
@@ -16,7 +16,8 @@ def print_usage():
 
 def create_alert(duration):
     print('Duration  = {}'.format(duration))
-    Alert.sendBluetoothAlert(0, 2, duration)
+    camera = random.randint(0,2)
+    Alert.sendBluetoothAlert(camera, 2, duration)
 
 def main():
     if len(sys.argv) > 1:
