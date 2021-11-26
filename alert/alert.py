@@ -28,7 +28,7 @@ def sendToDatabase():
 
 def sendToBluetoothDatabase():
     comm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
-                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
                         (alert_id, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 

@@ -2,6 +2,9 @@ from bt_rssi import BluetoothRSSI
 import time
 import sys
 import math
+
+
+sys.path.append('/home/linux/csc4008-teamg/')
 import alert.alert as Alert
 
 BT_ADDR = '70:00:9E:73:1A:97'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
@@ -12,10 +15,9 @@ def print_usage():
     print( "Usage: python test_address.py <bluetooth_input-address> [number-of-requests]")
 
 def create_alert(duration):
-    # print(f'Duration = {duration}')
     print('Duration  = {}'.format(duration))
     Alert.sendBluetoothAlert(0, 2, duration)
-    #Alert.sendAlert(0, 2, duration)
+
 def main():
     if len(sys.argv) > 1:
         addr = sys.argv[1]
@@ -46,34 +48,35 @@ def main():
 
 
     for i in range(1, num):
-        rssi_bt_1 = float(btrssi_1.get_rssi())
-        rssi_bt_2 = float(btrssi_2.get_rssi())
-        if( (rssi_bt_1!=0 or rssi_bt_2!=0)):                    #reduces initial false values of RSSI using initial delay of 10sec
-            count=count+1
-            #x = float((rssi_bt-A0)/(-10*n))         #Log Normal Shadowing Model considering d0 =1m where
-            x_1 = float((rssi_bt_1-A0_1)/(-10*n))
-            x_2 = float((rssi_bt_2-A0_2)/(-10*n))
-        #distance = (math.pow(10,x) * 100) + c
-            distance_1 = (math.pow(10,x_1) * 100) + c
-            distance_2 = (math.pow(10,x_2) * 100) + c
-            distance_1_2 = abs(distance_1 - distance_2)
-            # error_1 = abs(act_dist - distance_1_2)
-            # sum_error_1 = sum_error_1 + error_1
-            # avg_error_1 = sum_error_1/count
+        if (btrssi_1.request_rssi() is not None and btrssi_2.request_rssi() is not None):
+            rssi_bt_1 = float(btrssi_1.request_rssi()[0])
+            rssi_bt_2 = float(btrssi_2.request_rssi()[0])
+            if( (rssi_bt_1!=0 or rssi_bt_2!=0)):                    #reduces initial false values of RSSI using initial delay of 10sec
+                count=count+1
+                #x = float((rssi_bt-A0)/(-10*n))         #Log Normal Shadowing Model considering d0 =1m where
+                x_1 = float((rssi_bt_1-A0_1)/(-10*n))
+                x_2 = float((rssi_bt_2-A0_2)/(-10*n))
+            #distance = (math.pow(10,x) * 100) + c
+                distance_1 = (math.pow(10,x_1) * 100) + c
+                distance_2 = (math.pow(10,x_2) * 100) + c
+                distance_1_2 = abs(distance_1 - distance_2)
+                # error_1 = abs(act_dist - distance_1_2)
+                # sum_error_1 = sum_error_1 + error_1
+                # avg_error_1 = sum_error_1/count
 
-            if (distance_1_2 < 100 and start_time <= 0):
-                start_time = time.time()
-            else:
-                end_time = time.time()
-                create_alert(end_time-start_time)
-                start_time = 0
-                end_time = 0
-            print ("Approximate Distance:" + str(distance_1_2))
-            print( "RSSI 1: " + str(rssi_bt_1))
-            print ("RSSI 2: " + str(rssi_bt_2))
-            print( "Count: " + str(count))
-            print (" ")
-        time.sleep(1)
+                if (distance_1_2 < 100 and start_time <= 0):
+                    start_time = time.time()
+                else:
+                    end_time = time.time()
+                    create_alert(end_time-start_time)
+                    start_time = 0
+                    end_time = 0
+                print ("Approximate Distance:" + str(distance_1_2))
+                print( "RSSI 1: " + str(rssi_bt_1))
+                print ("RSSI 2: " + str(rssi_bt_2))
+                print( "Count: " + str(count))
+                print (" ")
+            time.sleep(1)
 
 
 
