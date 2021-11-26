@@ -1,4 +1,4 @@
-from bt_proximity import BluetoothRSSI
+from bt_rssi import BluetoothRSSI
 import time
 import sys
 import math
@@ -14,7 +14,8 @@ def print_usage():
 def create_alert(duration):
     # print(f'Duration = {duration}')
     print('Duration  = {}'.format(duration))
-    Alert.sendAlert(0, 2, duration)
+    Alert.sendBluetoothAlert(0, 2, duration)
+    #Alert.sendAlert(0, 2, duration)
 def main():
     if len(sys.argv) > 1:
         addr = sys.argv[1]

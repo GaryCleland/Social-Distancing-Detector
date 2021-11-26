@@ -26,6 +26,13 @@ def sendToDatabase():
 
     comm.conn.commit()
 
+def sendToBluetoothDatabase():
+    comm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
+
+    comm.conn.commit()
 
 def sendToWebApp():
     """camera, group_size, duration, fob_data, date_time, get_room(camera),
@@ -42,7 +49,21 @@ def sendAlert(cam, size, time):
     # used to remove duplicates
     alert_id = hashlib.sha1(str.encode(str(group_size)) + str.encode(str(camera)) +
                             str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
+    # TODO: implement check Dupes
     sendToDatabase()
+
+def sendBluetoothAlert(cam, size, time):
+    global camera, group_size, duration, location, fob_data, date_time, alert_id
+    camera = cam
+    group_size = size
+    duration = time
+    fob_data = fob.FobDataCollection(camera).get_student_count()
+    date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    # used to remove duplicates
+    alert_id = hashlib.sha1(str.encode(str(group_size)) + str.encode(str(camera)) +
+                            str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
+    # TODO: implement check Dupes
+    sendToBluetoothDatabase()
 
 
 # retrieve room from DB based on what camera was used
