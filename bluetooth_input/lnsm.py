@@ -21,7 +21,7 @@ def main():
         addr = sys.argv[1]
     elif BT_ADDR:
         addr = BT_ADDR
-	addrs = BT_ADDRS
+        addrs = BT_ADDRS
     else:
         print_usage()
         return
@@ -46,8 +46,8 @@ def main():
 
 
     for i in range(1, num):
-	rssi_bt_1 = float(btrssi_1.get_rssi())
-	rssi_bt_2 = float(btrssi_2.get_rssi())
+        rssi_bt_1 = float(btrssi_1.get_rssi())
+        rssi_bt_2 = float(btrssi_2.get_rssi())
         if( (rssi_bt_1!=0 or rssi_bt_2!=0)):                    #reduces initial false values of RSSI using initial delay of 10sec
             count=count+1
             #x = float((rssi_bt-A0)/(-10*n))         #Log Normal Shadowing Model considering d0 =1m where
