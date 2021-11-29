@@ -11,6 +11,7 @@
     <ScrollViewer>
         <StackPanel>
             <local:Header/>
+            <TextBox PlaceholderText="Filter by Module" TextChanged="textFilter_TextChanged"/>
             <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

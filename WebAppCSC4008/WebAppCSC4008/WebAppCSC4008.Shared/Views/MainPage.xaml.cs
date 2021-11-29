@@ -77,5 +77,12 @@ namespace WebAppCSC4008
             Date_time = "09/10/2021 12:00:23",
             Duration = 969,
         };
+
+        private void textFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filterText = (sender as TextBox).Text;
+            var filteredAlerts = Alerts.Where(a => a.Module.Contains(filterText)).ToList();
+            AlertView.ItemsSource = filteredAlerts;
+        }
     }
 }
