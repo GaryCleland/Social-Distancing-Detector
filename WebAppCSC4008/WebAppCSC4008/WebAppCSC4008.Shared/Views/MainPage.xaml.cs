@@ -92,28 +92,28 @@ namespace WebAppCSC4008
 
         private void TextFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filterText = (sender as TextBox).Text;
+            string filterText = (sender as TextBox).Text.ToLower();
             List<Alert> filteredAlerts = new List<Alert>();
 
             if (FilterMode.Equals("Module"))
             {
-                filteredAlerts = Alerts.Where(a => a.Module.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Module.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("Room"))
             {
-                filteredAlerts = Alerts.Where(a => a.Room.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Room.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("University"))
             {
-                filteredAlerts = Alerts.Where(a => a.University.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.University.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("DateTime"))
             {
-                filteredAlerts = Alerts.Where(a => a.Date_time.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Date_time.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("Lecturer"))
             {
-                filteredAlerts = Alerts.Where(a => a.Lecturer.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Lecturer.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals(""))
             {
@@ -127,28 +127,28 @@ namespace WebAppCSC4008
         {
             FilterMode = (sender as ComboBox).SelectedItem as string;
 
-            string filterText = FilterTextBox.Text;
+            string filterText = FilterTextBox.Text.ToLower();
             List<Alert> filteredAlerts = new List<Alert>();
 
             if (FilterMode.Equals("Module"))
             {
-                filteredAlerts = Alerts.Where(a => a.Module.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Module.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("Room"))
             {
-                filteredAlerts = Alerts.Where(a => a.Room.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Room.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("University"))
             {
-                filteredAlerts = Alerts.Where(a => a.University.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.University.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("DateTime"))
             {
-                filteredAlerts = Alerts.Where(a => a.Date_time.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Date_time.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals("Lecturer"))
             {
-                filteredAlerts = Alerts.Where(a => a.Lecturer.Contains(filterText)).ToList();
+                filteredAlerts = Alerts.Where(a => a.Lecturer.ToLower().Contains(filterText)).ToList();
             }
             else if (FilterMode.Equals(""))
             {
