@@ -11,7 +11,10 @@
     <ScrollViewer>
         <StackPanel>
             <local:Header/>
-            <TextBox PlaceholderText="Filter by Module" TextChanged="textFilter_TextChanged"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox PlaceholderText="Enter filter text..." TextChanged="TextFilter_TextChanged" x:Name="FilterTextBox"/>
+                <ComboBox x:Name="FilterModeBox" ItemsSource="{x:Bind FilterModes}" PlaceholderText="Filter by..." SelectionChanged="FilterMode_SelectionChanged"/>
+            </StackPanel>
             <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
