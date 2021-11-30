@@ -202,11 +202,27 @@ namespace WebAppCSC4008
                     FilteredAlerts = Alerts.ToList();
                 }
 
+            AlertView.ItemsSource = FilteredAlerts;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AlertView.ItemsSource = null;
             foreach (Alert alert in FilteredAlerts)
             {
-                alert.CFontSize = 50;
+                alert.CFontSize += 2;
             }
+            AlertView.ItemsSource = FilteredAlerts;
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AlertView.ItemsSource = null;
+            foreach (Alert alert in FilteredAlerts)
+            {
+                if (alert.CFontSize > 2)
+                    alert.CFontSize -= 2;
+            }
             AlertView.ItemsSource = FilteredAlerts;
         }
     }
