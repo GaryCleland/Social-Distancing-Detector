@@ -13,32 +13,68 @@ location = None
 fob_data = None
 date_time = None
 alert_id = None
-comm = communicator.Communicator()
+commWasm = communicator.Communicator("WebAppCSC4008/WebAppCSC4008/WebAppCSC4008.Wasm/Alert3.db")
+commUWP = communicator.Communicator("C:\\Users\\reube\\AppData\\Local\\Packages\\2d9c71c5-52e8-4d37-b305-126e7d9d8246_39mwtv5tpn0xy\\LocalState\\Alert.db")
+commDroid = communicator.Communicator("WebAppCSC4008/WebAppCSC4008/WebAppCSC4008.Droid/Alert2.db")
 university = md.University()
 lecturer = lec.Lecturer()
 
 
 def sendToDatabase():
-    comm.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
+    commWasm.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
                         (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 
-    comm.conn.commit()
+    commWasm.conn.commit()
+    
+    commUWP.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
+
+    commUWP.conn.commit()
+    
+    commDroid.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
+
+    commDroid.conn.commit()
 
 
 def sendToBluetoothDatabase():
-    comm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+    commWasm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
                         (alert_id, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 
-    comm.conn.commit()
+    commWasm.conn.commit()
+    
+    commUWP.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
+                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
+
+    commUWP.conn.commit()
+    
+    commDroid.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+                        "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
+                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                         get_module(), get_university(), get_lecturer()))
+
+    commDroid.conn.commit()    
 
 
 def appendToDatabase():
-    comm.cursor.execute("UPDATE Alert SET Duration = Duration + (?) WHERE Id = (?)", (duration, alert_id))
-    comm.conn.commit()
+    commWasm.cursor.execute("UPDATE Alert SET Duration = Duration + (?) WHERE Id = (?)", (duration, alert_id))
+    commWasm.conn.commit()
+    
+    commUWP.cursor.execute("UPDATE Alert SET Duration = Duration + (?) WHERE Id = (?)", (duration, alert_id))
+    commUWP.conn.commit()    
+    
+    commDroid.cursor.execute("UPDATE Alert SET Duration = Duration + (?) WHERE Id = (?)", (duration, alert_id))
+    commDroid.conn.commit()   
 
 
 def sendToWebApp():
@@ -99,8 +135,8 @@ def get_university():
 
 def isDuplicate(Id):
     exe = "SELECT * FROM Alert WHERE Id=(?)"
-    comm.cursor.execute(exe, (Id,))
-    res = comm.cursor.fetchall()
+    commWasm.cursor.execute(exe, (Id,))
+    res = commWasm.cursor.fetchall()
     if not res:
         return False
     return True

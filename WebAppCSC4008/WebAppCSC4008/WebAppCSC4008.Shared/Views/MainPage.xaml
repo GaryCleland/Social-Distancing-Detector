@@ -14,6 +14,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBox PlaceholderText="Enter filter text..." TextChanged="TextFilter_TextChanged" x:Name="FilterTextBox"/>
                 <ComboBox x:Name="FilterModeBox" ItemsSource="{x:Bind FilterModes}" PlaceholderText="Filter by..." SelectionChanged="FilterMode_SelectionChanged"/>
+                <Button Content="Refresh" Click="Button_Click"/>
             </StackPanel>
             <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
                 <ListView.ItemTemplate>
