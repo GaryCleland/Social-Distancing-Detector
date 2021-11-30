@@ -18,5 +18,11 @@ namespace WebAppCSC4008.Models
         public string Module { get; set; }
         public string University { get; set; }
         public string Lecturer { get; set; }
+        private double _cfontsize = 14;
+        public double CFontSize
+        {
+            get { return _cfontsize; }
+            set { _cfontsize = value; }
+        }
     }
 }

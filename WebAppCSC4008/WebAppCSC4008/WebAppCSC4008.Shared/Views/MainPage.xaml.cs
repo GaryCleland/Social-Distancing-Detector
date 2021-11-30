@@ -45,7 +45,7 @@ namespace WebAppCSC4008
 #else
             Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
 #endif
-            FilteredAlerts = Alerts.ToList(); 
+            FilteredAlerts = Alerts.ToList();
             AlertView.ItemsSource = FilteredAlerts;
         }
 
@@ -203,6 +203,44 @@ namespace WebAppCSC4008
                 }
 
             AlertView.ItemsSource = FilteredAlerts;
+        }
+
+        private void Zoomin_Click(object sender, RoutedEventArgs e)
+        {
+            AlertView.ItemsSource = null;
+            foreach (Alert alert in FilteredAlerts)
+            {
+                if (alert.CFontSize < 35)
+                    alert.CFontSize += 2;
+            }
+            AlertView.ItemsSource = FilteredAlerts;
+#if __WASM__ || NETFX_CORE
+            if (FilteredAlerts[0].CFontSize >= 35)
+                zoomin.IsEnabled = false;
+            else
+                zoomin.IsEnabled = true;
+            if (FilteredAlerts[0].CFontSize > 2)
+                zoomout.IsEnabled = true;
+#endif
+        }
+
+        private void Zoomout_Click(object sender, RoutedEventArgs e)
+        {
+            AlertView.ItemsSource = null;
+            foreach (Alert alert in FilteredAlerts)
+            {
+                if (alert.CFontSize > 2)
+                    alert.CFontSize -= 2;
+            }
+            AlertView.ItemsSource = FilteredAlerts;
+#if __WASM__ || NETFX_CORE
+            if (FilteredAlerts[0].CFontSize <= 2)
+                zoomout.IsEnabled = false;
+            else
+                zoomout.IsEnabled = true;
+            if (FilteredAlerts[0].CFontSize < 35)
+                zoomin.IsEnabled = true;
+#endif
         }
     }
 }
