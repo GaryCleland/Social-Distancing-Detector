@@ -45,7 +45,7 @@ namespace WebAppCSC4008
 #else
             Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
 #endif
-            FilteredAlerts = Alerts.ToList(); 
+            FilteredAlerts = Alerts.ToList();
             AlertView.ItemsSource = FilteredAlerts;
         }
 
