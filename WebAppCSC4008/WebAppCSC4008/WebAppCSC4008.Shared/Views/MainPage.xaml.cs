@@ -202,6 +202,11 @@ namespace WebAppCSC4008
                     FilteredAlerts = Alerts.ToList();
                 }
 
+            foreach (Alert alert in FilteredAlerts)
+            {
+                alert.CfontSize = 50;
+            }
+
             AlertView.ItemsSource = FilteredAlerts;
         }
     }
