@@ -210,15 +210,18 @@ namespace WebAppCSC4008
             AlertView.ItemsSource = null;
             foreach (Alert alert in FilteredAlerts)
             {
-                alert.CFontSize += 2;
+                if (alert.CFontSize < 35)
+                    alert.CFontSize += 2;
             }
             AlertView.ItemsSource = FilteredAlerts;
+#if __WASM__ || NETFX_CORE
             if (FilteredAlerts[0].CFontSize >= 35)
                 zoomin.IsEnabled = false;
             else
                 zoomin.IsEnabled = true;
             if (FilteredAlerts[0].CFontSize > 2)
                 zoomout.IsEnabled = true;
+#endif
         }
 
         private void Zoomout_Click(object sender, RoutedEventArgs e)
@@ -226,15 +229,18 @@ namespace WebAppCSC4008
             AlertView.ItemsSource = null;
             foreach (Alert alert in FilteredAlerts)
             {
-                alert.CFontSize -= 2;
+                if (alert.CFontSize > 2)
+                    alert.CFontSize -= 2;
             }
             AlertView.ItemsSource = FilteredAlerts;
+#if __WASM__ || NETFX_CORE
             if (FilteredAlerts[0].CFontSize <= 2)
                 zoomout.IsEnabled = false;
             else
                 zoomout.IsEnabled = true;
             if (FilteredAlerts[0].CFontSize < 35)
                 zoomin.IsEnabled = true;
+#endif
         }
     }
 }
