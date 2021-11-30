@@ -205,7 +205,7 @@ namespace WebAppCSC4008
             AlertView.ItemsSource = FilteredAlerts;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Zoomin_Click(object sender, RoutedEventArgs e)
         {
             AlertView.ItemsSource = null;
             foreach (Alert alert in FilteredAlerts)
@@ -213,17 +213,28 @@ namespace WebAppCSC4008
                 alert.CFontSize += 2;
             }
             AlertView.ItemsSource = FilteredAlerts;
+            if (FilteredAlerts[0].CFontSize >= 35)
+                zoomin.IsEnabled = false;
+            else
+                zoomin.IsEnabled = true;
+            if (FilteredAlerts[0].CFontSize > 2)
+                zoomout.IsEnabled = true;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Zoomout_Click(object sender, RoutedEventArgs e)
         {
             AlertView.ItemsSource = null;
             foreach (Alert alert in FilteredAlerts)
             {
-                if (alert.CFontSize > 2)
-                    alert.CFontSize -= 2;
+                alert.CFontSize -= 2;
             }
             AlertView.ItemsSource = FilteredAlerts;
+            if (FilteredAlerts[0].CFontSize <= 2)
+                zoomout.IsEnabled = false;
+            else
+                zoomout.IsEnabled = true;
+            if (FilteredAlerts[0].CFontSize < 35)
+                zoomin.IsEnabled = true;
         }
     }
 }
