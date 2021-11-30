@@ -45,7 +45,7 @@ namespace WebAppCSC4008
 #else
             Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
 #endif
-            FilteredAlerts = Alerts.ToList(); ;
+            FilteredAlerts = Alerts.ToList(); 
             AlertView.ItemsSource = FilteredAlerts;
         }
 
@@ -173,9 +173,11 @@ namespace WebAppCSC4008
 
             string filterText = FilterTextBox.Text.ToLower();
 
-            if (FilterMode != null)
-            {
-                if (FilterMode.Equals("Module"))
+                if (FilterMode == null)
+                {
+                    FilteredAlerts = Alerts.ToList();
+                }
+                else if (FilterMode.Equals("Module"))
                 {
                     FilteredAlerts = Alerts.Where(a => a.Module.ToLower().Contains(filterText)).ToList();
                 }
@@ -199,7 +201,6 @@ namespace WebAppCSC4008
                 {
                     FilteredAlerts = Alerts.ToList();
                 }
-            }
 
             AlertView.ItemsSource = FilteredAlerts;
         }
