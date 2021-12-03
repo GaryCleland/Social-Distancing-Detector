@@ -7,8 +7,8 @@ import random
 sys.path.append('/home/reuben/csc4008-teamg/')
 import alert.alert as Alert
 
-BT_ADDR = '70:00:9E:73:1A:97'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
-BT_ADDRS = ['70:00:9E:73:1A:97', '44:C6:5D:57:66:70']
+BT_ADDR = 'a0:28:ed:c4:57:08'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
+BT_ADDRS = ['a0:28:ed:c4:57:08', '68:b3:5e:3c:0e:7b']
 NUM_LOOP = 100
 
 def print_usage():
