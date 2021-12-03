@@ -1,0 +1,47 @@
+﻿<Page 
+    x:Class="WebAppCSC4008.Views.Graphs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WebAppCSC4008"
+    xmlns:model="using:WebAppCSC4008.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.ColumnSpan="2" Background="ForestGreen" Orientation="Horizontal">
+            <local:Header/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="employeeListGrid" Background="#9A9492">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ListView x:Name="listView" IsItemClickEnabled="True" SelectionMode="None" ItemClick="listView_ItemClick" Grid.Row="1" Header="Choose Graph from List:" BorderThickness="10" FontSize="18">
+                <!--<ListView.ItemTemplate>-->
+                <!--<DataTemplate x:DataType="model:GraphObject">-->
+                <!--<StackPanel Orientation="Horizontal">-->
+                <!--<TextBlock Text="{x:Bind GraphText,Mode=OneWay}" FontWeight="Bold"/> -->
+                <!--<TextBlock Text="{x:Bind LastName,Mode=OneWay}" Margin="5 0 0 0"/>-->
+                <!--</StackPanel> -->
+                <!--</DataTemplate>-->
+                <!--</ListView.ItemTemplate>-->
+            </ListView>
+        </Grid>
+        <TextBlock x:Name="txtblock1" Grid.Row="1" Grid.Column="1" Text=""></TextBlock>
+    </Grid>
+</Page>
