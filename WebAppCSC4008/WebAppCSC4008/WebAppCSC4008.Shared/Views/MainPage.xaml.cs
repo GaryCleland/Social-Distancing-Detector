@@ -166,6 +166,7 @@ namespace WebAppCSC4008
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            double size = FilteredAlerts[0].CFontSize;
             AlertView.ItemsSource = null;
             Alerts = new ObservableCollection<Alert>(App.AlertDatabase.GetDatabase().Table<Alert>().ToList());
 
@@ -202,6 +203,10 @@ namespace WebAppCSC4008
                     FilteredAlerts = Alerts.ToList();
                 }
 
+            foreach (Alert alert in FilteredAlerts)
+            {
+                alert.CFontSize = size;
+            }
             AlertView.ItemsSource = FilteredAlerts;
         }
 
