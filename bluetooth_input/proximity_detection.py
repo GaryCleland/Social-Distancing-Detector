@@ -4,7 +4,7 @@ import sys
 import math
 import random
 
-sys.path.append('C:/dev/csc4008-teamg/')
+sys.path.append('/home/reuben/csc4008-teamg/')
 import alert.alert as Alert
 
 BT_ADDR = '70:00:9E:73:1A:97'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
