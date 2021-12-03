@@ -42,6 +42,7 @@
                 <!--</ListView.ItemTemplate>-->
             </ListView>
         </Grid>
+        <Image x:Name="graphimage" Grid.Row="1" Grid.Column="1"/>
         <TextBlock x:Name="txtblock1" Grid.Row="1" Grid.Column="1" Text=""></TextBlock>
     </Grid>
 </Page>

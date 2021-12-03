@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WebAppCSC4008.Models;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,12 +30,23 @@ namespace WebAppCSC4008.Views
         {
             this.InitializeComponent();
             listView.ItemsSource = graphs;
+            DataContext = this;
         }
 
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            string image = "";
             graph = e.ClickedItem.ToString();
-            txtblock1.Text = graph;
-        }    
+            if (graph == "Most Frequent Breach Location")
+                image = "ms-appx:///Assets/testgraph.png";
+            else if (graph == "Daily Breaches")
+                image = "ms-appx:///Assets/testgraph2.png";
+            else
+                image = "ms-appx:///Assets/testgraph3.png";
+            imageSource = new BitmapImage(new Uri(image));
+            graphimage.Source = imageSource;
+        }
+
+        public ImageSource imageSource { get; set; }
     }
 }

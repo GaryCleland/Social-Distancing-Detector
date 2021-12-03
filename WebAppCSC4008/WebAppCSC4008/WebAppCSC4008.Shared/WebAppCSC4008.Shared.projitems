@@ -76,4 +76,9 @@
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\testgraph.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\testgraph2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\testgraph3.png" />
+  </ItemGroup>
 </Project>
