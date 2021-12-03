@@ -39,7 +39,7 @@ namespace WebAppCSC4008.Views
             graph = e.ClickedItem.ToString();
             if (graph == "Most Frequent Breach Location")
                 image = "ms-appx:///Assets/testgraph.png";
-            else if (graph == "Daily Breaches")
+            else if (graph == "Average Breach Duration Per Group")
                 image = "ms-appx:///Assets/testgraph2.png";
             else
                 image = "ms-appx:///Assets/testgraph3.png";

@@ -13,7 +13,7 @@ namespace WebAppCSC4008.Models
 
         public static List<string> graphs = new List<string>
         {
-            "Most Frequent Breach Location", "Daily Breaches", "Most Breaches in a day"
+            "Most Frequent Breach Location", "Average Breach Duration Per Group", "Breaches Per Module"
         };
     }
 }
