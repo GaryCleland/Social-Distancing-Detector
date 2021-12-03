@@ -60,9 +60,9 @@ def main():
                 distance_2 = (math.pow(10,x_2) * 100) + c
                 distance_1_2 = abs(distance_1 - distance_2)
                 if (distance_1_2 < 50 and start_time <= 0):
-                    start_time = time.clock()
+                    start_time = time.perf_counter()
                 if (distance_1_2 >= 50 and start_time > 0):
-                    end_time = time.clock()
+                    end_time = time.perf_counter()
                     print ("Duration" + str(end_time - start_time))
                     create_alert(end_time-start_time)
                     start_time = 0
