@@ -4,11 +4,11 @@ import sys
 import math
 import random
 
-sys.path.append('/home/linux/csc4008-teamg/')
+sys.path.append('/home/reuben/csc4008-teamg/')
 import alert.alert as Alert
 
-BT_ADDR = '70:00:9E:73:1A:97'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
-BT_ADDRS = ['70:00:9E:73:1A:97', '44:C6:5D:57:66:70']
+BT_ADDR = 'a0:28:ed:c4:57:08'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
+BT_ADDRS = ['a0:28:ed:c4:57:08', '68:b3:5e:3c:0e:7b']
 NUM_LOOP = 100
 
 def print_usage():
@@ -59,10 +59,10 @@ def main():
                 distance_1 = (math.pow(10,x_1) * 100) + c
                 distance_2 = (math.pow(10,x_2) * 100) + c
                 distance_1_2 = abs(distance_1 - distance_2)
-                if (distance_1_2 < 200 and start_time <= 0):
-                    start_time = time.clock()
-                if (distance_1_2 >= 200 and start_time > 0):
-                    end_time = time.clock()
+                if (distance_1_2 < 50 and start_time <= 0):
+                    start_time = time.perf_counter()
+                if (distance_1_2 >= 50 and start_time > 0):
+                    end_time = time.perf_counter()
                     print ("Duration" + str(end_time - start_time))
                     create_alert(end_time-start_time)
                     start_time = 0
