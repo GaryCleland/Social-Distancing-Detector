@@ -44,23 +44,23 @@ def sendToDatabase():
 
 
 def sendToBluetoothDatabase():
-    commWasm.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+    commWasm.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
-                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 
     commWasm.conn.commit()
     
-    commUWP.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+    commUWP.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
-                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 
     commUWP.conn.commit()
     
-    commDroid.cursor.execute("INSERT OR IGNORE INTO BluetoothAlert(Id, Group_size, Fob_data, Date_time, Duration, "
+    commDroid.cursor.execute("INSERT OR IGNORE INTO Alert(Id, Camera, Group_size, Fob_data, Date_time, Duration, "
                         "Room, Module, University, Lecturer) VALUES (?,?,?,?,?,?,?,?,?)",
-                        (alert_id, group_size, fob_data, date_time, duration, get_room(),
+                        (alert_id, camera, group_size, fob_data, date_time, duration, get_room(),
                          get_module(), get_university(), get_lecturer()))
 
     commDroid.conn.commit()    
