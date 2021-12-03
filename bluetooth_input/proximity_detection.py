@@ -54,21 +54,16 @@ def main():
             rssi_bt_2 = float(btrssi_2.request_rssi()[0])
             if( (rssi_bt_1!=0 or rssi_bt_2!=0)):                    #reduces initial false values of RSSI using initial delay of 10sec
                 count=count+1
-                #x = float((rssi_bt-A0)/(-10*n))         #Log Normal Shadowing Model considering d0 =1m where
                 x_1 = float((rssi_bt_1-A0_1)/(-10*n))
                 x_2 = float((rssi_bt_2-A0_2)/(-10*n))
-            #distance = (math.pow(10,x) * 100) + c
                 distance_1 = (math.pow(10,x_1) * 100) + c
                 distance_2 = (math.pow(10,x_2) * 100) + c
                 distance_1_2 = abs(distance_1 - distance_2)
-                # error_1 = abs(act_dist - distance_1_2)
-                # sum_error_1 = sum_error_1 + error_1
-                # avg_error_1 = sum_error_1/count
-
-                if (distance_1_2 < 100 and start_time <= 0):
-                    start_time = time.time()
-                else:
-                    end_time = time.time()
+                if (distance_1_2 < 200 and start_time <= 0):
+                    start_time = time.clock()
+                if (distance_1_2 >= 200 and start_time > 0):
+                    end_time = time.clock()
+                    print ("Duration" + str(end_time - start_time))
                     create_alert(end_time-start_time)
                     start_time = 0
                     end_time = 0
