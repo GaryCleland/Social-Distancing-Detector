@@ -33,8 +33,9 @@ namespace WebAppCSC4008.Views
             App.NavigationFrame = this.ContentFrame;
 
             listView.ItemsSource = graphs;
-
             DataContext = this;
+            imageSource = new BitmapImage(new Uri("ms-appx:///Assets/testgraph.png"));
+            graphimage.Source = imageSource;
         }
 
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
