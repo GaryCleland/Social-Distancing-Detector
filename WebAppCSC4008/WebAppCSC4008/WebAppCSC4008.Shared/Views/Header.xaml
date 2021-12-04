@@ -15,7 +15,7 @@
             <NavigationViewItem Content="Cameras" x:Name="CamerasLink" Tag="CamerasPage" />
             <NavigationViewItem Content="Graphs" x:Name="GraphsLink" Tag="GraphsPage" />
         </NavigationView.MenuItems>
-        <Grid Background="ForestGreen">
+        <Grid Background="#D3D3D3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
