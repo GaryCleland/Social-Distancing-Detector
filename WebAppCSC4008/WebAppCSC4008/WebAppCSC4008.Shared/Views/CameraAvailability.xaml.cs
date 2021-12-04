@@ -29,6 +29,9 @@ namespace WebAppCSC4008
         public CameraAvailability()
         {
             this.InitializeComponent();
+
+            App.NavigationFrame = this.ContentFrame;
+
             dataGrid.ItemsSource = cams;
         }
 

@@ -10,14 +10,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <local:Header/>
-        <Grid>
-            <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True">
-            </controls:DataGrid>
-        </Grid>
-        <TextBox x:Name="TextBox1" Header="Enter Camera Stream:"/>
-        <TextBlock x:Name="ClickTextBlock"/>
-        <Button x:Name="Button1" Content="Add Camera Stream" 
-            Click="Button_Click" />
+        <Frame x:Name="ContentFrame">
+            <StackPanel>
+                <local:Header/>
+                <Grid>
+                    <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True">
+                    </controls:DataGrid>
+                </Grid>
+                <TextBox x:Name="TextBox1" Header="Enter Camera Stream:"/>
+                <TextBlock x:Name="ClickTextBlock"/>
+                <Button x:Name="Button1" Content="Add Camera Stream" 
+                    Click="Button_Click" />
+            </StackPanel>
+        </Frame>
     </StackPanel>
 </Page>

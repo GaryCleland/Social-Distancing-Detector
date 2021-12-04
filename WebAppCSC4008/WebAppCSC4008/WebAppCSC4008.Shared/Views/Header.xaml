@@ -9,13 +9,20 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid Background="ForestGreen">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock Text="Stay_Away" Padding="5,0" FontSize="30" Grid.Row="0" />
-        <TextBlock Text="Alerts" Padding="25,0" FontSize="20" Grid.Row="1"/>
-    </Grid>
+    <NavigationView IsSettingsVisible="False" IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" ItemInvoked="NavView_ItemInvoked" IsPaneVisible="{x:Bind ShowNavBar}">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Alerts" x:Name="AlertsLink" Tag="AlertsPage" />
+            <NavigationViewItem Content="Cameras" x:Name="CamerasLink" Tag="CamerasPage" />
+            <NavigationViewItem Content="Graphs" x:Name="GraphsLink" Tag="GraphsPage" />
+        </NavigationView.MenuItems>
+        <Grid Background="ForestGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Stay_Away" Padding="5,0" FontSize="30" Grid.Row="0" />
+            <TextBlock Text="Alerts" Padding="25,0" FontSize="20" Grid.Row="1"/>
+        </Grid>
+    </NavigationView>
 </UserControl>

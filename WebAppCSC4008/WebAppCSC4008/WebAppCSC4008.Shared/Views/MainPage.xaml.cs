@@ -30,6 +30,8 @@ namespace WebAppCSC4008
         {
             this.InitializeComponent();
 
+            App.NavigationFrame = this.ContentFrame;
+
             FilterModes.Add("Module");
             FilterModes.Add("Room");
             FilterModes.Add("University");

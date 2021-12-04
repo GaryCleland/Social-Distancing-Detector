@@ -29,7 +29,11 @@ namespace WebAppCSC4008.Views
         public Graphs()
         {
             this.InitializeComponent();
+
+            App.NavigationFrame = this.ContentFrame;
+
             listView.ItemsSource = graphs;
+
             DataContext = this;
         }
 
