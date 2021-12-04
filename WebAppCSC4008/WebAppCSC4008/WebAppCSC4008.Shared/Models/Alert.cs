@@ -24,5 +24,18 @@ namespace WebAppCSC4008.Models
             get { return _cfontsize; }
             set { _cfontsize = value; }
         }
+
+        public string ScreenreaderDescription
+        {
+            get
+            {
+                string description = "";
+                description += "Alert number " + DisplayID + ". ";
+                description += "Occurred in " + University + " in room " + Room + ", ";
+                description += "On the " + Module + " module, taught by " + Lecturer + ". ";
+                description += "A breach involving " + Group_size + " people at " + Date_time + " for " + Duration + " seconds.";
+                return description;
+            }
+        }
     }
 }
