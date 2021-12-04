@@ -22,7 +22,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <TextBlock FontSize="{Binding CFontSize}">
+                <TextBlock FontSize="{Binding CFontSize}" AutomationProperties.Name="{Binding ScreenreaderDescription}">
                     <Run Text="Alert" FontWeight="ExtraBold"/>
                     <Run Text="{Binding DisplayID}" FontWeight="ExtraBold"/>
                     <LineBreak/>
