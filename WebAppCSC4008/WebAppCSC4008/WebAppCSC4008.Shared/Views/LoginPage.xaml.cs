@@ -40,6 +40,7 @@ namespace WebAppCSC4008
             if (username == testUsername && password == testPassword)
             {
                 loginTextBlock.Text = String.Format("Login Sucessful\nWelcome : {0}", username);
+                App.NavigationFrame.Navigate(typeof(MainPage));
             }
             else
             {
