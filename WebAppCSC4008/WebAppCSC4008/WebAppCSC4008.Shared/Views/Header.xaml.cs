@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using WebAppCSC4008.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,5 +24,25 @@ namespace WebAppCSC4008
         {
             this.InitializeComponent();
         }
+
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var item = args.InvokedItemContainer as NavigationViewItem;
+
+			switch (item.Tag?.ToString() ?? string.Empty)
+			{
+				case "AlertsPage":
+					App.NavigationFrame.Navigate(typeof(MainPage));
+					break;
+
+				case "CamerasPage":
+					App.NavigationFrame.Navigate(typeof(CameraAvailability));
+					break;
+
+				case "GraphsPage":
+					App.NavigationFrame.Navigate(typeof(Graphs));
+					break;
+			}
+		}
     }
 }
