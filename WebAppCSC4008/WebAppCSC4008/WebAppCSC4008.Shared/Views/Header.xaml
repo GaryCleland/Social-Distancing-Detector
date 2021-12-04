@@ -22,7 +22,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Text="Stay_Away" Padding="5,0" FontSize="30" Grid.Row="0" />
-            <TextBlock Text="Alerts" Padding="25,0" FontSize="20" Grid.Row="1"/>
+            <TextBlock Text="{x:Bind PageTitle}" Padding="25,0" FontSize="20" Grid.Row="1"/>
         </Grid>
     </NavigationView>
 </UserControl>

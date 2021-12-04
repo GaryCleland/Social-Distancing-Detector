@@ -53,5 +53,14 @@ namespace WebAppCSC4008
 
 		public static readonly DependencyProperty ShowNavBarProperty =
 			DependencyProperty.Register("ShowNavBar", typeof(bool), typeof(Header), new PropertyMetadata(true));
-    }
+
+		public string PageTitle
+		{
+			get { return (string)GetValue(PageTitleProperty); }
+			set { SetValue(PageTitleProperty, value); }
+		}
+
+		public static readonly DependencyProperty PageTitleProperty =
+			DependencyProperty.Register("PageTitle", typeof(string), typeof(Header), new PropertyMetadata(null));
+	}
 }

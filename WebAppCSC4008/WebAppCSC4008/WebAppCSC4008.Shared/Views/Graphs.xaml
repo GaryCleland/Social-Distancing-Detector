@@ -23,7 +23,7 @@
 
 
             <StackPanel Grid.ColumnSpan="2" Background="ForestGreen" Orientation="Horizontal">
-                <local:Header/>
+                <local:Header PageTitle="Graphs"/>
             </StackPanel>
 
             <Grid Grid.Row="1" x:Name="employeeListGrid" Background="#9A9492">

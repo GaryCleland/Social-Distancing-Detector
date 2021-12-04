@@ -12,7 +12,7 @@
     <StackPanel>
         <Frame x:Name="ContentFrame">
             <StackPanel>
-                <local:Header/>
+                <local:Header PageTitle="Cameras"/>
                 <Grid>
                     <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True">
                     </controls:DataGrid>
