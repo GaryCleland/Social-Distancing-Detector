@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <NavigationView IsSettingsVisible="False" IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" ItemInvoked="NavView_ItemInvoked">
+    <NavigationView IsSettingsVisible="False" IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" PaneDisplayMode="Top" ItemInvoked="NavView_ItemInvoked" IsPaneVisible="{x:Bind ShowNavBar}">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Alerts" x:Name="AlertsLink" Tag="AlertsPage" />
             <NavigationViewItem Content="Cameras" x:Name="CamerasLink" Tag="CamerasPage" />

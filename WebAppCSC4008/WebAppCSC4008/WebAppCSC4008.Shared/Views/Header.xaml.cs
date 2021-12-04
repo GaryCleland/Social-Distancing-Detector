@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,5 +44,14 @@ namespace WebAppCSC4008
 					break;
 			}
 		}
+
+		public bool ShowNavBar
+		{
+			get { return (bool)GetValue(ShowNavBarProperty); }
+			set { SetValue(ShowNavBarProperty, value); }
+		}
+
+		public static readonly DependencyProperty ShowNavBarProperty =
+			DependencyProperty.Register("ShowNavBar", typeof(bool), typeof(Header), new PropertyMetadata(true));
     }
 }
