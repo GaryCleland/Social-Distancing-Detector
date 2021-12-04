@@ -27,8 +27,6 @@ namespace WebAppCSC4008
         public LoginPage()
         {
             this.InitializeComponent();
-
-            App.NavigationFrame = this.ContentFrame;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

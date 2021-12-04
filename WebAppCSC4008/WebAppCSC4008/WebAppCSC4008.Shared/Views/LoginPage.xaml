@@ -10,18 +10,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Frame x:Name="ContentFrame">
-            <StackPanel>
-                <local:Header/>
-                <TextBlock Text="Login" Margin="20" FontSize="30" />
-                <TextBox x:Name="userTextBox" Header="Enter username:"/>
-                <TextBlock x:Name="userTextBlock"/>
-                <PasswordBox x:Name="passTextBox" Header="Enter Password:"/>
-                <TextBlock x:Name="passTextBlock"/>
-                <Button x:Name="Button1" Content="Login" 
-                Click="Button_Click" />
-                <TextBlock x:Name="loginTextBlock"/>
-            </StackPanel>
-        </Frame>
+        <StackPanel>
+            <local:Header/>
+            <TextBlock Text="Login" Margin="20" FontSize="30" />
+            <TextBox x:Name="userTextBox" Header="Enter username:"/>
+            <TextBlock x:Name="userTextBlock"/>
+            <PasswordBox x:Name="passTextBox" Header="Enter Password:"/>
+            <TextBlock x:Name="passTextBlock"/>
+            <Button x:Name="Button1" Content="Login" 
+            Click="Button_Click" />
+            <TextBlock x:Name="loginTextBlock"/>
+        </StackPanel>
     </Grid>
 </Page>
