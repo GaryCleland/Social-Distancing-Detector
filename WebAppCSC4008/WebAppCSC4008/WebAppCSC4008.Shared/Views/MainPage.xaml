@@ -8,14 +8,27 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <local:Header/>
-        <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <local:AlertCell/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <Frame x:Name="ContentFrame">
+                <StackPanel>
+                    <local:Header/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox PlaceholderText="Enter filter text..." TextChanged="TextFilter_TextChanged" x:Name="FilterTextBox"/>
+                        <ComboBox x:Name="FilterModeBox" ItemsSource="{x:Bind FilterModes}" PlaceholderText="Filter by..." SelectionChanged="FilterMode_SelectionChanged"/>
+                        <Button Content="Refresh"/>
+                        <Button x:Name="zoomin" Content="Zoom in"/>
+                        <Button x:Name="zoomout" Content="Zoom out"/>
+                    </StackPanel>
+                    <ListView x:Name="AlertView" ItemsSource="{x:Bind Alerts}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <local:AlertCell/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Frame>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

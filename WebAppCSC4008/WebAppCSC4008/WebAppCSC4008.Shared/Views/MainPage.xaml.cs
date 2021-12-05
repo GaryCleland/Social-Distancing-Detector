@@ -26,22 +26,18 @@ namespace WebAppCSC4008
     {
         public MainPage()
         {
-            Alert Alert1 = new Alert
-            {
-                ID = 523,
-                University = "Queen's University Belfast",
-                Room = "CSB 02/027",
-                Module = "CSC4008",
-                Lecturer = "Dr. Barry McCollum",
-                GroupSize = 2,
-                DateTime = new DateTime(2021, 11, 10, 10, 43, 12),
-                Duration = new TimeSpan(0, 34, 17),
-            };
+
             Alerts.Add(Alert1);
             Alerts.Add(Alert2);
             Alerts.Add(Alert3);
 
             this.InitializeComponent();
+
+            FilterModes.Add("Module");
+            FilterModes.Add("Room");
+            FilterModes.Add("University");
+            FilterModes.Add("DateTime");
+            FilterModes.Add("Lecturer");
 
             AlertView.ItemsSource = Alerts;
         }
@@ -83,6 +79,84 @@ namespace WebAppCSC4008
         };
 
         public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
+
+        public ObservableCollection<string> FilterModes = new ObservableCollection<string>();
+
+        public List<Alert> FilteredAlerts = new List<Alert>();
+
+        public string FilterMode;
+
+        private void TextFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filterText = (sender as TextBox).Text.ToLower();
+
+            if (FilterMode != null)
+            {
+                if (FilterMode.Equals("Module"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Module.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("Room"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Room.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("University"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.University.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("DateTime"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.DateTime.ToString().ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("Lecturer"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Lecturer.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals(""))
+                {
+                    FilteredAlerts = Alerts.ToList();
+                }
+            }
+
+            AlertView.ItemsSource = FilteredAlerts;
+        }
+
+        private void FilterMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterMode = (sender as ComboBox).SelectedItem as string;
+
+            string filterText = FilterTextBox.Text.ToLower();
+
+            if (FilterMode != null)
+            {
+                if (FilterMode.Equals("Module"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Module.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("Room"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Room.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("University"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.University.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("DateTime"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.DateTime.ToString().ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals("Lecturer"))
+                {
+                    FilteredAlerts = Alerts.Where(a => a.Lecturer.ToLower().Contains(filterText)).ToList();
+                }
+                else if (FilterMode.Equals(""))
+                {
+                    FilteredAlerts = Alerts.ToList();
+                }
+            }
+
+            AlertView.ItemsSource = FilteredAlerts;
+        }        
 
     }
 }
