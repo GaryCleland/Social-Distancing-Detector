@@ -58,15 +58,15 @@ namespace WebAppCSC4008.Models
             set => SetProperty(ref groupSize, value);
         }
 
-        private DateTime dateTime;
-        public DateTime DateTime
+        private string dateTime;
+        public string DateTime
         {
             get => dateTime;
             set => SetProperty(ref dateTime, value);
         }
 
-        private TimeSpan duration;
-        public TimeSpan Duration
+        private double duration;
+        public double Duration
         {
             get => duration;
             set => SetProperty(ref duration, value);

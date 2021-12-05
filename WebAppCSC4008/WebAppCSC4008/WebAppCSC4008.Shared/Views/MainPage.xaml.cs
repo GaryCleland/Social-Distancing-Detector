@@ -27,9 +27,13 @@ namespace WebAppCSC4008
         public MainPage()
         {
 
-            Alerts.Add(Alert1);
-            Alerts.Add(Alert2);
-            Alerts.Add(Alert3);
+            Alerts.Add(Alert4);
+            Alerts.Add(Alert5);
+            Alerts.Add(Alert6);
+            Alerts.Add(Alert7);
+            Alerts.Add(Alert8);
+            Alerts.Add(Alert9);
+            Alerts.Add(Alert10);
 
             this.InitializeComponent();
 
@@ -42,40 +46,88 @@ namespace WebAppCSC4008
             AlertView.ItemsSource = Alerts;
         }
 
-        public Alert Alert1 = new Alert
+        public Alert Alert4 = new Alert
         {
-            ID = 523,
-            University = "Queen's University Belfast",
-            Room = "CSB 02/027",
-            Module = "CSC4008",
+            ID = 4,
+            University = "Queen's",
+            Room = "CSB 02/27",
+            Module = "CSC4006",
             Lecturer = "Dr. Barry McCollum",
-            GroupSize = 2,
-            DateTime = new DateTime(2021, 11, 10, 10, 43, 12),
-            Duration = new TimeSpan(0, 34, 17),
+            GroupSize = 4,
+            DateTime = "18/11/2021 00:34:05",
+            Duration = 11.585,
         };
 
-        public Alert Alert2 = new Alert
+        public Alert Alert5 = new Alert
         {
-            ID = 527,
-            University = "Queen's University Belfast",
-            Room = "ASH 09/005",
-            Module = "CSC4005",
-            Lecturer = "Dr. Blesson Varghese",
-            GroupSize = 12,
-            DateTime = new DateTime(2021, 11, 10, 16, 01, 2),
-            Duration = new TimeSpan(0, 5, 5),
-        };
-
-        public Alert Alert3 = new Alert
-        {
-            ID = 463,
-            University = "Queen's University Belfast",
-            Room = "DKB 0G/115",
-            Module = "CSC4008",
+            ID = 5,
+            University = "Queen's",
+            Room = "CSB 02/27",
+            Module = "CSC4006",
             Lecturer = "Dr. Barry McCollum",
             GroupSize = 3,
-            DateTime = new DateTime(2021, 10, 9, 12, 00, 23),
-            Duration = new TimeSpan(0, 16, 9),
+            DateTime = "18/11/2021 00:34:08",
+            Duration = 2.49582,
+        };
+
+        public Alert Alert6 = new Alert
+        {
+            ID = 6,
+            University = "Queen's",
+            Room = "CSB 02/27",
+            Module = "CSC4006",
+            Lecturer = "Dr. Barry McCollum",
+            GroupSize = 2,
+            DateTime = "18/11/2021 00:34:11",
+            Duration = 2.55424,
+        };
+
+        public Alert Alert7 = new Alert
+        {
+            ID = 7,
+            University = "Queen's",
+            Room = "CSB 02/27",
+            Module = "CSC4006",
+            Lecturer = "Dr. Barry McCollum",
+            GroupSize = 5,
+            DateTime = "18/11/2021 00:35:21",
+            Duration = 2.24924,
+        };
+
+        public Alert Alert8 = new Alert
+        {
+            ID = 8,
+            University = "Queen's",
+            Room = "DKB 0G/118",
+            Module = "CSC4008",
+            Lecturer = "Dr. Jesus Martinez del Rincon",
+            GroupSize = 2,
+            DateTime = "18/11/2021 00:38:21",
+            Duration = 2.46173,
+        };
+
+        public Alert Alert9 = new Alert
+        {
+            ID = 9,
+            University = "Queen's",
+            Room = "DKB 0G/118",
+            Module = "CSC4008",
+            Lecturer = "Dr. Jesus Martinez del Rincon",
+            GroupSize = 3,
+            DateTime = "18/11/2021 00:42:09",
+            Duration = 3.51294,
+        };
+
+        public Alert Alert10 = new Alert
+        {
+            ID = 10,
+            University = "Queen's",
+            Room = "DKB 0G/118",
+            Module = "CSC4008",
+            Lecturer = "Dr. Jesus Martinez del Rincon",
+            GroupSize = 4,
+            DateTime = "18/11/2021 00:42:37",
+            Duration = 5.9955,
         };
 
         public ObservableCollection<Alert> Alerts = new ObservableCollection<Alert>();
