@@ -33,7 +33,7 @@ namespace WebAppCSC4008.Models
                 description += "Alert number " + DisplayID + ". ";
                 description += "Occurred in " + University + " in room " + Room + ", ";
                 description += "On the " + Module + " module, taught by " + Lecturer + ". ";
-                description += "A breach involving " + Group_size + " people at " + Date_time + " for " + Duration + " seconds.";
+                description += "A breach involving " + Group_size + " people at " + Date_time + " for " + Math.Round(Duration,2) + " seconds.";
                 return description;
             }
         }
