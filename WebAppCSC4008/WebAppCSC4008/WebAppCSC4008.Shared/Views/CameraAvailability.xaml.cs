@@ -38,7 +38,7 @@ namespace WebAppCSC4008
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string text = TextBox1.Text;
-            cams.Add(new Camera(cams.Count+1, text, status(rand.Next(0,2)), room(rand.Next(0, 3)), "Queen's University Belfast"));
+            cams.Add(new Camera(cams.Count+1, text, status(rand.Next(0,1)), "DKB 0G/118", "Queen's University Belfast"));
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = cams;
             if (!string.IsNullOrEmpty(text))

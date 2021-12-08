@@ -8,8 +8,8 @@ sys.path.append('/home/reuben/csc4008-teamg/')
 import alert.alert as Alert
 
 BT_ADDR = 'a0:28:ed:c4:57:08'  # You can put your Bluetooth address here.  E.g: 'a4:70:d6:7d:ee:00'
-BT_ADDRS = ['a0:28:ed:c4:57:08', '68:b3:5e:3c:0e:7b']
-NUM_LOOP = 100
+BT_ADDRS = ['a0:28:ed:c4:57:08', '90:CD:B6:0B:B8:36']
+NUM_LOOP = 1000
 
 def print_usage():
     print( "Usage: python test_address.py <bluetooth_input-address> [number-of-requests]")
@@ -18,6 +18,7 @@ def create_alert(duration):
     print('Duration  = {}'.format(duration))
     camera = random.randint(0,2)
     Alert.sendBluetoothAlert(camera, 2, duration)
+    print('Alert generated and sent to database.')
 
 def main():
     if len(sys.argv) > 1:
@@ -59,18 +60,16 @@ def main():
                 distance_1 = (math.pow(10,x_1) * 100) + c
                 distance_2 = (math.pow(10,x_2) * 100) + c
                 distance_1_2 = abs(distance_1 - distance_2)
-                if (distance_1_2 < 50 and start_time <= 0):
+                if (distance_1_2 < 20 and start_time <= 0):
                     start_time = time.perf_counter()
-                if (distance_1_2 >= 50 and start_time > 0):
+                if (distance_1_2 >= 20 and start_time > 0):
                     end_time = time.perf_counter()
-                    print ("Duration" + str(end_time - start_time))
                     create_alert(end_time-start_time)
                     start_time = 0
                     end_time = 0
                 print ("Approximate Distance:" + str(distance_1_2))
                 print( "RSSI 1: " + str(rssi_bt_1))
-                print ("RSSI 2: " + str(rssi_bt_2))
-                print( "Count: " + str(count))
+                print ("RSSI 2: " + str(rssi_bt_2))             
                 print (" ")
             time.sleep(1)
 

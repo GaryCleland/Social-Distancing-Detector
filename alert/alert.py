@@ -93,7 +93,7 @@ def sendBluetoothAlert(cam, size, time):
     date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     # used to remove duplicates
     alert_id = hashlib.sha1(str.encode(str(group_size)) + str.encode(str(camera)) +
-                            str.encode(datetime.today().strftime("%B %d, %Y"))).hexdigest()
+                            str.encode(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))).hexdigest()
     # TODO: implement check Dupes
     sendToBluetoothDatabase()
 
