@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TwoDecimalPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Alert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AlertCell.xaml.cs">
       <DependentUpon>AlertCell.xaml</DependentUpon>
